@@ -1,123 +1,83 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tejas — Portfolio</title>
-  <meta name="description" content="Supervised ML portfolio: Linear Regression, Random Forest, Gradient Boosting, Neural Network." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
+<style>
+  :root{
+    /* --- soft sky palette --- */
+    --bg-1:#f0f9ff;  /* sky-50  */  /* lightest glow */
+    --bg-2:#e0f2fe;  /* sky-100 */
+    --bg-3:#bae6fd;  /* sky-200 */
+    --ink:#0b1533;   /* body text (deep navy) */
+    --muted:#51607b; /* secondary text */
+    --accent:#38bdf8;/* sky-400 (links/buttons) */
+    --card:#ffffffcc;/* “glass” cards */
+    --radius:24px;
+    --shadow-hi:0 24px 48px rgba(15,23,42,.14);
+    --shadow-lo:0 2px 10px rgba(15,23,42,.06);
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; color:var(--ink);
+    font:16px/1.6 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    /* --- fluffy sky background (layered radial-gradients) --- */
+    background:
+      radial-gradient(1200px 800px at 20% -10%, var(--bg-3), transparent 60%),
+      radial-gradient(900px 700px at 100% 0%,  var(--bg-2), transparent 55%),
+      radial-gradient(600px 500px at 10% 90%,  var(--bg-1), transparent 50%),
+      #f7fbff;
+  }
+
+  .wrap{max-width:980px;margin-inline:auto;padding:40px 20px}
+
+  /* header + logo */
+  header{display:flex;align-items:center;gap:14px;color:var(--muted);font-weight:600}
+  .logo{
+    width:40px;height:40px;border-radius:12px;
+    background:linear-gradient(180deg,#ffd76b,#f7b23a);
+    box-shadow:inset 0 1px 0 #fff8, var(--shadow-lo);
+    display:grid;place-items:center;color:#fff;font-weight:800;
+  }
+
+  /* hero “glass” card */
+  .hero{
+    margin-top:24px;background:var(--card);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-radius:var(--radius); box-shadow:var(--shadow-hi); padding:36px; position:relative;
+  }
+  .pill{
+    position:absolute; left:50%; top:-30px; transform:translateX(-50%);
+    width:64px;height:64px;border-radius:16px;background:#fff;
+    box-shadow:0 12px 24px rgba(15,23,42,.12), inset 0 1px 0 #fff;
+    display:grid;place-items:center; font-size:28px;
+  }
+  .pill::before{content:"📊"}
+
+  h1{margin:16px 0 6px;font-size:clamp(28px,5vw,44px);letter-spacing:.2px}
+  .subtitle{margin:0;color:var(--muted)}
+
+  .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+  .btn{appearance:none;border:0;border-radius:14px;padding:12px 16px;font-weight:600;cursor:pointer;
+       box-shadow:var(--shadow-lo);transition:transform .06s, box-shadow .2s}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(15,23,42,.15)}
+  .primary{background:var(--accent);color:#062033}
+  .ghost{background:#fff;color:#0b1533;border:1px solid #e5f0ff}
+
+  /* project cards */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px}
+  .card{background:#fff;border-radius:18px;padding:18px;box-shadow:var(--shadow-lo);border:1px solid #e8f2ff}
+  .card h3{margin:.25rem 0}
+  .meta{color:var(--muted);font-size:.95rem}
+  .link{color:#1d4ed8;text-decoration:none}
+  .link:hover{text-decoration:underline}
+
+  footer{margin:28px 0 6px;color:#5f6c86}
+
+  /* optional: keep a gentle dark-mode, still blue-leaning */
+  @media (prefers-color-scheme: dark){
     :root{
-      --bg-1:#e6f0ff; --bg-2:#cfe3ff; --bg-3:#b7d6ff;
-      --card:#ffffffcc;             /* translucent white */
-      --text:#0b1533;               /* deep navy */
-      --muted:#445;                 /* softer text */
-      --accent:#2e7cf6;             /* link / button */
-      --radius:24px;
-      --shadow-hi:0 20px 40px rgba(14,30,64,.15);
-      --shadow-lo:0 2px 8px rgba(14,30,64,.08);
+      --ink:#eaf1ff; --muted:#b8c1dd; --card:#ffffff24;
+      --bg-1:#0a2540; --bg-2:#0b2c55; --bg-3:#10376b; /* midnight blue variant */
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--text);
-      /* soft, fluffy sky */
-      background:
-        radial-gradient(1200px 800px at 20% -10%, var(--bg-3), transparent 60%),
-        radial-gradient(900px 700px at 100% 0%, var(--bg-2), transparent 55%),
-        radial-gradient(600px 500px at 10% 90%, var(--bg-1), transparent 50%),
-        #f7fbff;
-    }
-    .wrap{max-width:980px;margin-inline:auto;padding:40px 20px}
-    header{
-      display:flex; align-items:center; gap:14px; color:var(--muted); font-weight:600;
-    }
-    .logo{
-      width:40px;height:40px;border-radius:12px;
-      background:linear-gradient(180deg,#ffd76b,#f7b23a);
-      box-shadow:inset 0 1px 0 #fff8, var(--shadow-lo);
-      display:grid;place-items:center;color:#fff;font-weight:800;
-    }
-    .hero{
-      margin-top:24px;
-      background:var(--card);
-      backdrop-filter: blur(16px);       /* glassy blur */
-      -webkit-backdrop-filter: blur(16px);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow-hi);
-      padding:36px;
-      position:relative;
-    }
-    .pill{
-      position:absolute; left:50%; top:-30px; transform:translateX(-50%);
-      width:64px;height:64px;border-radius:16px;background:#fff;
-      box-shadow:0 10px 20px rgba(14,30,64,.12), inset 0 1px 0 #fff;
-      display:grid;place-items:center;
-    }
-    .pill::before{
-      content:"📊"; font-size:28px;
-    }
-    h1{margin:16px 0 6px;font-size:clamp(28px,5vw,44px);letter-spacing:.2px}
-    .subtitle{margin:0;color:var(--muted)}
-    .cta{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
-    .btn{
-      appearance:none;border:0;border-radius:14px;padding:12px 16px;font-weight:600;cursor:pointer;
-      box-shadow:var(--shadow-lo); transition:transform .06s ease, box-shadow .2s ease;
-    }
-    .btn:hover{transform:translateY(-1px); box-shadow:0 6px 18px rgba(14,30,64,.18)}
-    .primary{background:var(--accent); color:#fff;}
-    .ghost{background:#fff;color:var(--text)}
-    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:24px}
-    .card{
-      background:#fff; border-radius:18px; padding:18px; box-shadow:var(--shadow-lo);
-    }
-    .card h3{margin:.25rem 0}
-    .meta{color:var(--muted); font-size:.95rem}
-    footer{margin:28px 0 6px; color:#667}
-    /* dark-ish mode */
-    @media (prefers-color-scheme: dark){
-      :root{--text:#eaf1ff; --muted:#b8c1dd; --card:#ffffff24}
-      body{background:#0f172a}
-      .ghost{background:transparent; border:1px solid #ffffff40}
-      .card{background:#0b1226; border:1px solid #ffffff1a}
-    }
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="logo">T</div>
-      <div>Tejas • Portfolio</div>
-    </header>
-
-    <section class="hero">
-      <div class="pill" aria-hidden="true"></div>
-      <h1>Supervised ML, beautifully organized.</h1>
-      <p class="subtitle">Linear Regression • Random Forest • Gradient Boosting • Neural Network</p>
-      <div class="cta">
-        <a class="btn primary" href="https://github.com/tjas01/Supervised-MLM" target="_blank" rel="noopener">View Project</a>
-        <a class="btn ghost" href="#" title="Upload later">Download Résumé</a>
-      </div>
-    </section>
-
-    <section class="grid" aria-label="Projects">
-      <article class="card">
-        <h3>Supervised-MLM</h3>
-        <p class="meta">Ames Housing • Clean sklearn/Keras pipelines • RMSE, MAPE, R²</p>
-        <a class="btn ghost" href="https://github.com/tjas01/Supervised-MLM" target="_blank" rel="noopener">Repository</a>
-      </article>
-      <article class="card">
-        <h3>Coming soon</h3>
-        <p class="meta">Add your next project here. Duplicate a card, change the link.</p>
-        <button class="btn ghost" disabled>Private for now</button>
-      </article>
-    </section>
-
-    <footer><small>© <span id="y"></span> Tejas • Built with GitHub Pages</small></footer>
-  </div>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
-</body>
-</html>
+    .ghost{background:transparent;border:1px solid #ffffff3a;color:#eaf1ff}
+    .card{background:#0b1426;border:1px solid #ffffff1a}
+  }
+</style>
