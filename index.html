@@ -9,36 +9,35 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg-start:#8BBEE6;      /* your gradient */
-      --bg-end:#5B85AA;
-      --card:#A1C8E8;          /* your center card */
-      --ink:#102035;           /* text */
-      --muted:#4e6079;         /* secondary text */
-      --accent:#1f6fb2;        /* buttons/links */
+      --bg-start:#8BBEE6;      /* background gradient start */
+      --bg-end:#5B85AA;        /* background gradient end   */
+      --card:#A1C8E8;          /* center card color         */
+      --ink:#102035;           /* text                      */
+      --muted:#4e6079;         /* secondary text            */
+      --accent:#1f6fb2;        /* buttons/links             */
       --radius:28px;
       --shadow: 0 28px 72px rgba(20, 40, 70, .24), 0 6px 18px rgba(20, 40, 70, .14);
-      --ring:#ffffff88;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0; color:var(--ink);
       font:16px/1.6 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      /* light, fluffy sky (keep your colors but soften with white glows) */
+      /* extra-light, fluffy sky */
       background:
-        radial-gradient(1000px 700px at 12% 92%, rgba(255,255,255,.85), transparent 60%),
-        radial-gradient(1200px 800px at 94% -12%, rgba(255,255,255,.75), transparent 55%),
+        radial-gradient(1200px 900px at 12% 92%, rgba(255,255,255,.90), transparent 60%),
+        radial-gradient(1400px 1000px at 90% -10%, rgba(255,255,255,.85), transparent 55%),
         linear-gradient(135deg, var(--bg-start), var(--bg-end)),
-        #f8fbff;
+        #f9fcff;
     }
     .wrap{max-width:1024px; margin-inline:auto; padding:40px 20px}
-    /* Center card */
+    /* hero card */
     .hero{
       position:relative; text-align:center;
       background:var(--card); border-radius:var(--radius);
       padding:56px 28px 36px; box-shadow:var(--shadow);
     }
-    /* New badge icon (data-analyst vibe: magnifier + bars) */
+    /* data-analyst badge (magnifier + bars) */
     .badge{
       position:absolute; left:50%; top:-30px; transform:translateX(-50%);
       width:72px; height:72px; border-radius:20px; background:#0c1a2e;
@@ -48,8 +47,7 @@
     .badge svg{filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));}
     h1{margin:0 0 6px; font-size:clamp(32px,6vw,48px); letter-spacing:.2px}
     .role{margin:0 0 10px; color:#173252; font-style:italic; font-weight:600}
-    .lead{margin:0 auto 18px; color:var(--muted); max-width:62ch}
-    .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:6px}
+    .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:8px}
     .btn{
       appearance:none; border:0; cursor:pointer; font-weight:600;
       padding:12px 16px; border-radius:14px; text-decoration:none; display:inline-block;
@@ -60,16 +58,14 @@
     .primary{background:var(--accent); color:#fff}
     .ghost{background:#fff; color:var(--ink); border:1px solid #e9f2ff}
 
-    /* Skills grid */
-    .skills{margin-top:18px}
-    .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:16px}
-    .card{
-      background:#fff; border:1px solid #e7f1fb; border-radius:18px; padding:16px 18px;
-      box-shadow:0 4px 10px rgba(15,30,60,.08)
-    }
-    .card h3{margin:.15rem 0 .35rem}
+    /* chips + highlights */
+    .chips{max-width:920px; margin:18px auto 0; display:flex; flex-wrap:wrap; gap:10px; justify-content:center}
+    .chip{padding:8px 12px; border-radius:999px; background:#fff; border:1px solid #e7f1fb; box-shadow:0 2px 6px rgba(15,30,60,.06)}
+    .hiwrap{max-width:920px; margin:16px auto 0}
+    .card{background:#fff; border:1px solid #e7f1fb; border-radius:18px; padding:16px 18px; box-shadow:0 4px 10px rgba(15,30,60,.08); text-align:left}
     .card ul{margin:0; padding-left:18px; color:var(--muted)}
-    .card li{margin:.25rem 0}
+    .card li{margin:.25rem 0; list-style-position:outside}
+
     footer{margin:26px 0 6px; color:#5e6f86; text-align:center}
   </style>
 </head>
@@ -77,7 +73,7 @@
   <main class="wrap">
     <section class="hero" aria-labelledby="title">
       <div class="badge" aria-hidden="true">
-        <!-- inline SVG: magnifier over bars -->
+        <!-- magnifier over bars -->
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <rect x="3" y="11" width="3" height="7" rx="1" fill="#6ec1ff"/>
           <rect x="8" y="8" width="3" height="10" rx="1" fill="#a7d4ff"/>
@@ -92,83 +88,35 @@
 
       <div class="cta">
         <a class="btn primary" href="https://github.com/tjas01" target="_blank" rel="noopener">View Repository</a>
-        <a class="btn ghost" href="https://docs.google.com/document/d/1yllgDKpD88WgszzXMBIyP7JBR5FXneLldbGwTmUzfyw/edit?usp=sharing" target="_blank" rel="noopener">Download Résumé</a>
+        <!-- Always-fresh PDF export of your Google Doc -->
+        <a class="btn ghost"
+           href="https://docs.google.com/document/d/1yllgDKpD88WgszzXMBIyP7JBR5FXneLldbGwTmUzfyw/export?format=pdf"
+           target="_blank" rel="noopener">Download Résumé</a>
       </div>
+    </section>
 
-      <!-- Skill sections -->
-      <section class="skills">
-        <div class="grid">
-          <article class="card">
-            <h3>Data Governance & Quality</h3>
-            <ul>
-              <li>Data dictionary & taxonomy; classifications</li>
-              <li>Ownership & stewardship</li>
-              <li>Quality rules, issue logs, documentation</li>
-              <li>Audit trails, end-user training, KPI definitions</li>
-              <li>Git & GitHub</li>
-            </ul>
-          </article>
+    <!-- CAPABILITIES (pill chips) -->
+    <section class="wrap" style="padding-top:0">
+      <div class="chips">
+        <span class="chip">Data Governance</span>
+        <span class="chip">Power BI & Excel</span>
+        <span class="chip">SQL & ETL</span>
+        <span class="chip">Automation & AI</span>
+        <span class="chip">Communication</span>
+      </div>
+    </section>
 
-          <article class="card">
-            <h3>Analytics & Visualization</h3>
-            <ul>
-              <li>Power BI (DAX, Power Query, modeling)</li>
-              <li>Excel (advanced), Tableau, Looker Studio</li>
-              <li>KPI design & executive reporting</li>
-              <li>Azure Analysis Services</li>
-              <li>Maps & geospatial filters</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>SQL & Data Engineering</h3>
-            <ul>
-              <li>SQL (CTEs, joins, window functions)</li>
-              <li>ETL, validation, schema mapping</li>
-              <li>Fabric Dataflows Gen2</li>
-              <li>SharePoint & OneDrive pipelines</li>
-              <li>Databricks, Data Warehouse</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>Process & Business Analysis</h3>
-            <ul>
-              <li>Requirements intake</li>
-              <li>SIPOC mapping</li>
-              <li>SOP authoring</li>
-              <li>Change recommendations</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>ERP & Systems</h3>
-            <ul>
-              <li>SAP, Unipro, Breezy HR</li>
-              <li>NAS administration, Microsoft 365</li>
-              <li>ClickUp, Notion</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>Automation & AI</h3>
-            <ul>
-              <li>n8n, Make, GitHub Actions</li>
-              <li>Google Apps Script, Docker</li>
-              <li>LLM/RAG with Ollama or containers; Qdrant vectors</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>Communication</h3>
-            <ul>
-              <li>Clear storytelling for nontechnical audiences</li>
-              <li>Weekly executive readouts to 250+ stakeholders (Teams, Zoom, Meet)</li>
-              <li>Project scheduling</li>
-            </ul>
-          </article>
+    <!-- HIGHLIGHTS (short, scannable) -->
+    <section class="wrap" style="padding-top:0">
+      <div class="hiwrap">
+        <div class="card">
+          <ul>
+            <li>Weekly executive readouts to 250+ stakeholders (Teams/Zoom/Meet)</li>
+            <li>KPI design & governance (definitions, quality rules, audit trails)</li>
+            <li>Dashboards & models: Power BI (DAX, Power Query), SQL (CTEs/windows), GitHub workflows</li>
+          </ul>
         </div>
-      </section>
+      </div>
     </section>
 
     <footer><small>© <span id="y"></span> Tejas Vyasam • Built with GitHub Pages</small></footer>
