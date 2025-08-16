@@ -1,83 +1,133 @@
-<style>
-  :root{
-    /* --- soft sky palette --- */
-    --bg-1:#f0f9ff;  /* sky-50  */  /* lightest glow */
-    --bg-2:#e0f2fe;  /* sky-100 */
-    --bg-3:#bae6fd;  /* sky-200 */
-    --ink:#0b1533;   /* body text (deep navy) */
-    --muted:#51607b; /* secondary text */
-    --accent:#38bdf8;/* sky-400 (links/buttons) */
-    --card:#ffffffcc;/* “glass” cards */
-    --radius:24px;
-    --shadow-hi:0 24px 48px rgba(15,23,42,.14);
-    --shadow-lo:0 2px 10px rgba(15,23,42,.06);
-  }
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tejas Vyasam — Portfolio</title>
+  <meta name="description" content="Supervised ML portfolio by Tejas Vyasam." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0; color:var(--ink);
-    font:16px/1.6 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-    /* --- fluffy sky background (layered radial-gradients) --- */
-    background:
-      radial-gradient(1200px 800px at 20% -10%, var(--bg-3), transparent 60%),
-      radial-gradient(900px 700px at 100% 0%,  var(--bg-2), transparent 55%),
-      radial-gradient(600px 500px at 10% 90%,  var(--bg-1), transparent 50%),
-      #f7fbff;
-  }
-
-  .wrap{max-width:980px;margin-inline:auto;padding:40px 20px}
-
-  /* header + logo */
-  header{display:flex;align-items:center;gap:14px;color:var(--muted);font-weight:600}
-  .logo{
-    width:40px;height:40px;border-radius:12px;
-    background:linear-gradient(180deg,#ffd76b,#f7b23a);
-    box-shadow:inset 0 1px 0 #fff8, var(--shadow-lo);
-    display:grid;place-items:center;color:#fff;font-weight:800;
-  }
-
-  /* hero “glass” card */
-  .hero{
-    margin-top:24px;background:var(--card);
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-    border-radius:var(--radius); box-shadow:var(--shadow-hi); padding:36px; position:relative;
-  }
-  .pill{
-    position:absolute; left:50%; top:-30px; transform:translateX(-50%);
-    width:64px;height:64px;border-radius:16px;background:#fff;
-    box-shadow:0 12px 24px rgba(15,23,42,.12), inset 0 1px 0 #fff;
-    display:grid;place-items:center; font-size:28px;
-  }
-  .pill::before{content:"📊"}
-
-  h1{margin:16px 0 6px;font-size:clamp(28px,5vw,44px);letter-spacing:.2px}
-  .subtitle{margin:0;color:var(--muted)}
-
-  .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-  .btn{appearance:none;border:0;border-radius:14px;padding:12px 16px;font-weight:600;cursor:pointer;
-       box-shadow:var(--shadow-lo);transition:transform .06s, box-shadow .2s}
-  .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(15,23,42,.15)}
-  .primary{background:var(--accent);color:#062033}
-  .ghost{background:#fff;color:#0b1533;border:1px solid #e5f0ff}
-
-  /* project cards */
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px}
-  .card{background:#fff;border-radius:18px;padding:18px;box-shadow:var(--shadow-lo);border:1px solid #e8f2ff}
-  .card h3{margin:.25rem 0}
-  .meta{color:var(--muted);font-size:.95rem}
-  .link{color:#1d4ed8;text-decoration:none}
-  .link:hover{text-decoration:underline}
-
-  footer{margin:28px 0 6px;color:#5f6c86}
-
-  /* optional: keep a gentle dark-mode, still blue-leaning */
-  @media (prefers-color-scheme: dark){
+  <style>
     :root{
-      --ink:#eaf1ff; --muted:#b8c1dd; --card:#ffffff24;
-      --bg-1:#0a2540; --bg-2:#0b2c55; --bg-3:#10376b; /* midnight blue variant */
+      /* your colors */
+      --bg-start:#8BBEE6;
+      --bg-end:#5B85AA;
+      --card:#A1C8E8;
+      /* ui tokens */
+      --ink:#0f1b2d;           /* text */
+      --muted:#4d6078;         /* secondary text */
+      --accent:#1f6fb2;        /* button/link */
+      --radius:28px;
+      --shadow: 0 28px 72px rgba(20, 40, 70, .28), 0 6px 18px rgba(20, 40, 70, .18);
     }
-    .ghost{background:transparent;border:1px solid #ffffff3a;color:#eaf1ff}
-    .card{background:#0b1426;border:1px solid #ffffff1a}
-  }
-</style>
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--ink);
+      font:16px/1.6 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      /* soft sky + subtle white glows around corners */
+      background:
+        radial-gradient(900px 600px at 15% 90%, rgba(255,255,255,.55), transparent 60%),
+        radial-gradient(1100px 700px at 90% -10%, rgba(255,255,255,.45), transparent 55%),
+        linear-gradient(135deg, var(--bg-start), var(--bg-end));
+    }
+
+    .wrap{max-width:980px;margin-inline:auto;padding:40px 20px}
+
+    /* the center card */
+    .hero{
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);        /* soft, smooth shadow */
+      padding: 56px 28px 36px;
+      text-align:center;
+      position: relative;
+    }
+
+    /* floating badge like the screenshot */
+    .badge{
+      position:absolute; left:50%; top:-30px; transform:translateX(-50%);
+      width:72px; height:72px; border-radius:20px; background:#fff;
+      display:grid; place-items:center;
+      box-shadow: 0 18px 40px rgba(18,36,64,.20), inset 0 1px 0 #ffffffcc;
+    }
+    .badge svg rect:nth-child(1){fill:#f2c335} /* tiny bars icon */
+    .badge svg rect:nth-child(2){fill:#e7a81e}
+    .badge svg rect:nth-child(3){fill:#cf8e10}
+
+    h1{margin:0 0 8px; font-size:clamp(30px,6vw,48px); letter-spacing:.2px}
+    p.lead{margin:0 auto 18px; color:var(--muted); max-width:62ch}
+
+    .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:4px}
+    .btn{
+      appearance:none; border:0; cursor:pointer; font-weight:600;
+      padding:12px 16px; border-radius:14px; text-decoration:none; display:inline-block;
+      transition: transform .06s ease, box-shadow .2s ease;
+      box-shadow: 0 4px 10px rgba(15,30,60,.15);
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .primary{background:var(--accent); color:#fff}
+    .ghost{background:#fff; color:var(--ink); border:1px solid #e9f2ff}
+
+    /* project card area (add more later if you want) */
+    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:22px}
+    .card{background:#ffffff; border:1px solid #e7f1fb; border-radius:18px; padding:18px; box-shadow:0 4px 10px rgba(15,30,60,.08)}
+    .card h3{margin:.25rem 0}
+    .card p{margin:.25rem 0; color:var(--muted)}
+
+    footer{margin:26px 0 6px; color:#5e6f86; text-align:center}
+    a.link{color:var(--accent); text-decoration:none}
+    a.link:hover{text-decoration:underline}
+
+    /* gentle dark preference */
+    @media (prefers-color-scheme: dark){
+      :root{ --ink:#eaf1ff; --muted:#b9c5dd }
+      body{ background: linear-gradient(135deg, #0a2742, #0d3155); }
+      .hero{ background: #A1C8E833; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+      .ghost{ background: transparent; border:1px solid #ffffff33; color:#eaf1ff }
+      .card{ background:#0d162a; border-color:#ffffff1a }
+      .badge{ background:#0d162a }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="title">
+      <div class="badge" aria-hidden="true">
+        <!-- simple “bars” icon -->
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="10" width="4" height="10" rx="1.5"></rect>
+          <rect x="10" y="6" width="4" height="14" rx="1.5"></rect>
+          <rect x="17" y="3" width="4" height="17" rx="1.5"></rect>
+        </svg>
+      </div>
+
+      <h1 id="title">Tejas Vyasam</h1>
+      <p class="lead">Supervised ML portfolio — Linear Regression • Random Forest • Gradient Boosting • Neural Network</p>
+
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/tjas01/Supervised-MLM" target="_blank" rel="noopener">View Repository</a>
+        <!-- Replace resume.pdf with your actual file/url when ready -->
+        <a class="btn ghost" href="./resume.pdf" target="_blank" rel="noopener">Download Résumé</a>
+      </div>
+    </section>
+
+    <!-- add more cards later if you want -->
+    <!--
+    <section class="grid" aria-label="Projects">
+      <article class="card">
+        <h3>Supervised-MLM</h3>
+        <p>Ames Housing • Clean sklearn/Keras pipelines • RMSE, MAPE, R²</p>
+        <a class="link" href="https://github.com/tjas01/Supervised-MLM" target="_blank" rel="noopener">Open on GitHub ↗</a>
+      </article>
+    </section>
+    -->
+
+    <footer><small>© <span id="y"></span> Tejas Vyasam • Built with GitHub Pages</small></footer>
+  </main>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
