@@ -3,64 +3,53 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tejas Vyasam — Portfolio</title>
-  <meta name="description" content="Supervised ML portfolio by Tejas Vyasam." />
+  <title>Tejas Vyasam — Data Analyst</title>
+  <meta name="description" content="Portfolio of Tejas Vyasam — Data Analyst." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
   <style>
     :root{
-      /* your colors */
-      --bg-start:#8BBEE6;
+      --bg-start:#8BBEE6;      /* your gradient */
       --bg-end:#5B85AA;
-      --card:#A1C8E8;
-      /* ui tokens */
-      --ink:#0f1b2d;           /* text */
-      --muted:#4d6078;         /* secondary text */
-      --accent:#1f6fb2;        /* button/link */
+      --card:#A1C8E8;          /* your center card */
+      --ink:#102035;           /* text */
+      --muted:#4e6079;         /* secondary text */
+      --accent:#1f6fb2;        /* buttons/links */
       --radius:28px;
-      --shadow: 0 28px 72px rgba(20, 40, 70, .28), 0 6px 18px rgba(20, 40, 70, .18);
+      --shadow: 0 28px 72px rgba(20, 40, 70, .24), 0 6px 18px rgba(20, 40, 70, .14);
+      --ring:#ffffff88;
     }
-
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0; color:var(--ink);
       font:16px/1.6 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      /* soft sky + subtle white glows around corners */
+      /* light, fluffy sky (keep your colors but soften with white glows) */
       background:
-        radial-gradient(900px 600px at 15% 90%, rgba(255,255,255,.55), transparent 60%),
-        radial-gradient(1100px 700px at 90% -10%, rgba(255,255,255,.45), transparent 55%),
-        linear-gradient(135deg, var(--bg-start), var(--bg-end));
+        radial-gradient(1000px 700px at 12% 92%, rgba(255,255,255,.85), transparent 60%),
+        radial-gradient(1200px 800px at 94% -12%, rgba(255,255,255,.75), transparent 55%),
+        linear-gradient(135deg, var(--bg-start), var(--bg-end)),
+        #f8fbff;
     }
-
-    .wrap{max-width:980px;margin-inline:auto;padding:40px 20px}
-
-    /* the center card */
+    .wrap{max-width:1024px; margin-inline:auto; padding:40px 20px}
+    /* Center card */
     .hero{
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);        /* soft, smooth shadow */
-      padding: 56px 28px 36px;
-      text-align:center;
-      position: relative;
+      position:relative; text-align:center;
+      background:var(--card); border-radius:var(--radius);
+      padding:56px 28px 36px; box-shadow:var(--shadow);
     }
-
-    /* floating badge like the screenshot */
+    /* New badge icon (data-analyst vibe: magnifier + bars) */
     .badge{
       position:absolute; left:50%; top:-30px; transform:translateX(-50%);
-      width:72px; height:72px; border-radius:20px; background:#fff;
+      width:72px; height:72px; border-radius:20px; background:#0c1a2e;
+      box-shadow: 0 18px 40px rgba(18,36,64,.18), inset 0 1px 0 #ffffff44;
       display:grid; place-items:center;
-      box-shadow: 0 18px 40px rgba(18,36,64,.20), inset 0 1px 0 #ffffffcc;
     }
-    .badge svg rect:nth-child(1){fill:#f2c335} /* tiny bars icon */
-    .badge svg rect:nth-child(2){fill:#e7a81e}
-    .badge svg rect:nth-child(3){fill:#cf8e10}
-
-    h1{margin:0 0 8px; font-size:clamp(30px,6vw,48px); letter-spacing:.2px}
-    p.lead{margin:0 auto 18px; color:var(--muted); max-width:62ch}
-
-    .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:4px}
+    .badge svg{filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));}
+    h1{margin:0 0 6px; font-size:clamp(32px,6vw,48px); letter-spacing:.2px}
+    .role{margin:0 0 10px; color:#173252; font-style:italic; font-weight:600}
+    .lead{margin:0 auto 18px; color:var(--muted); max-width:62ch}
+    .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:6px}
     .btn{
       appearance:none; border:0; cursor:pointer; font-weight:600;
       padding:12px 16px; border-radius:14px; text-decoration:none; display:inline-block;
@@ -71,59 +60,116 @@
     .primary{background:var(--accent); color:#fff}
     .ghost{background:#fff; color:var(--ink); border:1px solid #e9f2ff}
 
-    /* project card area (add more later if you want) */
-    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:22px}
-    .card{background:#ffffff; border:1px solid #e7f1fb; border-radius:18px; padding:18px; box-shadow:0 4px 10px rgba(15,30,60,.08)}
-    .card h3{margin:.25rem 0}
-    .card p{margin:.25rem 0; color:var(--muted)}
-
-    footer{margin:26px 0 6px; color:#5e6f86; text-align:center}
-    a.link{color:var(--accent); text-decoration:none}
-    a.link:hover{text-decoration:underline}
-
-    /* gentle dark preference */
-    @media (prefers-color-scheme: dark){
-      :root{ --ink:#eaf1ff; --muted:#b9c5dd }
-      body{ background: linear-gradient(135deg, #0a2742, #0d3155); }
-      .hero{ background: #A1C8E833; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-      .ghost{ background: transparent; border:1px solid #ffffff33; color:#eaf1ff }
-      .card{ background:#0d162a; border-color:#ffffff1a }
-      .badge{ background:#0d162a }
+    /* Skills grid */
+    .skills{margin-top:18px}
+    .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:16px}
+    .card{
+      background:#fff; border:1px solid #e7f1fb; border-radius:18px; padding:16px 18px;
+      box-shadow:0 4px 10px rgba(15,30,60,.08)
     }
+    .card h3{margin:.15rem 0 .35rem}
+    .card ul{margin:0; padding-left:18px; color:var(--muted)}
+    .card li{margin:.25rem 0}
+    footer{margin:26px 0 6px; color:#5e6f86; text-align:center}
   </style>
 </head>
 <body>
   <main class="wrap">
     <section class="hero" aria-labelledby="title">
       <div class="badge" aria-hidden="true">
-        <!-- simple “bars” icon -->
-        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="3" y="10" width="4" height="10" rx="1.5"></rect>
-          <rect x="10" y="6" width="4" height="14" rx="1.5"></rect>
-          <rect x="17" y="3" width="4" height="17" rx="1.5"></rect>
+        <!-- inline SVG: magnifier over bars -->
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="11" width="3" height="7" rx="1" fill="#6ec1ff"/>
+          <rect x="8" y="8" width="3" height="10" rx="1" fill="#a7d4ff"/>
+          <rect x="13" y="5" width="3" height="13" rx="1" fill="#fff3a0"/>
+          <circle cx="17.5" cy="15.5" r="3.5" stroke="#ffd166" stroke-width="2" fill="none"/>
+          <line x1="20.3" y1="18.3" x2="22.8" y2="20.8" stroke="#ffd166" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </div>
 
       <h1 id="title">Tejas Vyasam</h1>
-      <p class="lead">Supervised ML portfolio — Linear Regression • Random Forest • Gradient Boosting • Neural Network</p>
+      <p class="role"><em>Data Analyst</em></p>
 
       <div class="cta">
-        <a class="btn primary" href="https://github.com/tjas01/Supervised-MLM" target="_blank" rel="noopener">View Repository</a>
-        <!-- Replace resume.pdf with your actual file/url when ready -->
-        <a class="btn ghost" href="./resume.pdf" target="_blank" rel="noopener">Download Résumé</a>
+        <a class="btn primary" href="https://github.com/tjas01" target="_blank" rel="noopener">View Repository</a>
+        <a class="btn ghost" href="https://docs.google.com/document/d/1yllgDKpD88WgszzXMBIyP7JBR5FXneLldbGwTmUzfyw/edit?usp=sharing" target="_blank" rel="noopener">Download Résumé</a>
       </div>
-    </section>
 
-    <!-- add more cards later if you want -->
-    <!--
-    <section class="grid" aria-label="Projects">
-      <article class="card">
-        <h3>Supervised-MLM</h3>
-        <p>Ames Housing • Clean sklearn/Keras pipelines • RMSE, MAPE, R²</p>
-        <a class="link" href="https://github.com/tjas01/Supervised-MLM" target="_blank" rel="noopener">Open on GitHub ↗</a>
-      </article>
+      <!-- Skill sections -->
+      <section class="skills">
+        <div class="grid">
+          <article class="card">
+            <h3>Data Governance & Quality</h3>
+            <ul>
+              <li>Data dictionary & taxonomy; classifications</li>
+              <li>Ownership & stewardship</li>
+              <li>Quality rules, issue logs, documentation</li>
+              <li>Audit trails, end-user training, KPI definitions</li>
+              <li>Git & GitHub</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Analytics & Visualization</h3>
+            <ul>
+              <li>Power BI (DAX, Power Query, modeling)</li>
+              <li>Excel (advanced), Tableau, Looker Studio</li>
+              <li>KPI design & executive reporting</li>
+              <li>Azure Analysis Services</li>
+              <li>Maps & geospatial filters</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>SQL & Data Engineering</h3>
+            <ul>
+              <li>SQL (CTEs, joins, window functions)</li>
+              <li>ETL, validation, schema mapping</li>
+              <li>Fabric Dataflows Gen2</li>
+              <li>SharePoint & OneDrive pipelines</li>
+              <li>Databricks, Data Warehouse</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Process & Business Analysis</h3>
+            <ul>
+              <li>Requirements intake</li>
+              <li>SIPOC mapping</li>
+              <li>SOP authoring</li>
+              <li>Change recommendations</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>ERP & Systems</h3>
+            <ul>
+              <li>SAP, Unipro, Breezy HR</li>
+              <li>NAS administration, Microsoft 365</li>
+              <li>ClickUp, Notion</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Automation & AI</h3>
+            <ul>
+              <li>n8n, Make, GitHub Actions</li>
+              <li>Google Apps Script, Docker</li>
+              <li>LLM/RAG with Ollama or containers; Qdrant vectors</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Communication</h3>
+            <ul>
+              <li>Clear storytelling for nontechnical audiences</li>
+              <li>Weekly executive readouts to 250+ stakeholders (Teams, Zoom, Meet)</li>
+              <li>Project scheduling</li>
+            </ul>
+          </article>
+        </div>
+      </section>
     </section>
-    -->
 
     <footer><small>© <span id="y"></span> Tejas Vyasam • Built with GitHub Pages</small></footer>
   </main>
