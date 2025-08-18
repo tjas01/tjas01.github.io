@@ -10,9 +10,8 @@
 
   <style>
     :root{
-      /* your palette */
-      --bg-start:#eaf5ff;      /* lighter top tint */
-      --bg-mid:#8BBEE6;        /* requested gradient colors */
+      --bg-start:#eaf5ff;
+      --bg-mid:#8BBEE6;
       --bg-end:#5B85AA;
       --card:#A1C8E8;
       --ink:#102035;
@@ -27,7 +26,6 @@
     body{
       margin:0; color:var(--ink);
       font:16px/1.6 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      /* linear top->bottom (lighter at top) */
       background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-mid) 38%, var(--bg-end) 100%);
     }
 
@@ -39,7 +37,7 @@
       border-radius:var(--radius); padding:56px 28px 32px; box-shadow:var(--shadow);
     }
 
-    /* badge (magnifier + bars) */
+    /* badge */
     .badge{
       position:absolute; left:50%; top:-30px; transform:translateX(-50%);
       width:72px; height:72px; border-radius:20px; background:#0c1a2e;
@@ -49,7 +47,11 @@
     .badge svg{filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));}
 
     h1{margin:0 0 6px; font-size:clamp(32px,6vw,48px); letter-spacing:.2px}
-    .role{margin:0 2px 10px; color:#173252; font-style:italic; font-weight:600}
+    .role{
+      margin:0 2px 10px; color:#173252; font-style:italic; font-weight:700;
+      /* increased size per request */
+      font-size:clamp(18px, 3.2vw, 26px);
+    }
 
     .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:8px}
     .btn{
@@ -75,6 +77,19 @@
     .stat .k{font-size:22px; font-weight:800}
     .stat .l{color:var(--muted); font-size:13px}
 
+    /* summary card */
+    .summary{
+      margin-top:14px; text-align:left;
+      background:#ffffffd9; border:1px solid #e7f1fb; border-radius:14px; padding:16px 18px;
+      box-shadow:0 4px 10px rgba(15,30,60,.08);
+    }
+    .summary h2{margin:0 0 8px; font-size:18px}
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+    .chip{
+      border:1px solid #d8e7f8; background:#f7fbff; color:#123; font-weight:600;
+      padding:6px 10px; border-radius:999px; font-size:12px;
+    }
+
     footer{margin:26px 0 6px; color:#5e6f86; text-align:center}
   </style>
 </head>
@@ -96,34 +111,52 @@
       <p class="role"><em>Data Analyst</em></p>
 
       <div class="cta">
-        <a class="btn" href="https://github.com/tjas01" target="_blank" rel="noopener" aria-label="View GitHub repositories">
+        <a class="btn" href="https://github.com/tjas01" target="_blank" rel="noopener" aria-label="GitHub repository list">
           <!-- GitHub mark -->
           <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .2a8 8 0 0 0-2.53 15.6c.4.07.55-.17.55-.38v-1.33c-2.25.49-2.72-1.05-2.72-1.05-.36-.92-.88-1.17-.88-1.17-.72-.49.06-.48.06-.48.8.06 1.22.83 1.22.83.71 1.22 1.86.87 2.32.66.07-.52.28-.87.5-1.07-1.79-.2-3.67-.9-3.67-4.02 0-.89.32-1.61.84-2.18-.08-.21-.36-1.04.08-2.17 0 0 .67-.22 2.2.83a7.5 7.5 0 0 1 4 0c1.53-1.05 2.2-.83 2.2-.83.44 1.13.16 1.96.08 2.17.52.57.84 1.29.84 2.18 0 3.13-1.88 3.82-3.68 4.02.29.25.54.74.54 1.5v2.22c0 .21.15.46.55.38A8 8 0 0 0 8 .2Z"/></svg>
-          View Repository
+          Repository
         </a>
 
         <a class="btn ghost"
            href="https://docs.google.com/document/d/1yllgDKpD88WgszzXMBIyP7JBR5FXneLldbGwTmUzfyw/preview"
-           target="_blank" rel="noopener" aria-label="View Résumé in browser">
-          <!-- Document icon -->
+           target="_blank" rel="noopener" aria-label="Open résumé in browser">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="1.8"/></svg>
-          View Résumé
+          Résumé
         </a>
 
         <a class="btn ghost"
            href="https://www.linkedin.com/in/tejasvyasam/"
-           target="_blank" rel="noopener" aria-label="View LinkedIn profile">
+           target="_blank" rel="noopener" aria-label="Open LinkedIn profile">
           <!-- LinkedIn icon -->
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.1c0-1.69-.03-3.87-2.36-3.87-2.36 0-2.72 1.84-2.72 3.75V23h-4V8z"/></svg>
-          View LinkedIn Profile
+          LinkedIn Profile
         </a>
       </div>
 
       <!-- GitHub mini-stats -->
       <div class="stats" id="stats">
         <div class="stat"><div class="k" id="repos">—</div><div class="l">Public Repos</div></div>
-        <div class="stat"><div class="k" id="stars">—</div><div class="l">Total Stars (public)</div></div>
-        <div class="stat"><div class="k" id="pushes">—</div><div class="l">Pushes (last 30 days)</div></div>
+        <div class="stat"><div class="k" id="followers">—</div><div class="l">Followers</div></div>
+        <div class="stat"><div class="k" id="updated">—</div><div class="l">Repos Updated (30d)</div></div>
+        <div class="stat"><div class="k" id="pushes">—</div><div class="l">Pushes (30d)</div></div>
+      </div>
+
+      <!-- Summary / capabilities -->
+      <div class="summary" aria-labelledby="sum-h">
+        <h2 id="sum-h">Capabilities</h2>
+        <p style="margin:0">
+          Data analytics and automation specialist. I build executive-ready Power BI views, automate ETL with Python and n8n/Fabric Dataflows, and improve data quality with pragmatic governance.
+        </p>
+        <div class="chips" aria-label="Key skills">
+          <span class="chip">Power BI (DAX, Modeling)</span>
+          <span class="chip">SQL (CTEs, Windows)</span>
+          <span class="chip">Python ETL</span>
+          <span class="chip">n8n / Make</span>
+          <span class="chip">Data Governance</span>
+          <span class="chip">SIPOC & SOPs</span>
+          <span class="chip">Azure Fabric / OneDrive</span>
+          <span class="chip">Docker & GitHub</span>
+        </div>
       </div>
     </section>
 
@@ -132,9 +165,8 @@
 
   <script>
     // Live GitHub stats (public data; 60/hr unauthenticated)
-    // Docs: GET /users/{username}, /users/{username}/repos (pagination), /users/{username}/events/public
+    // Endpoints: /users/{username}, /users/{username}/repos (paginated), /users/{username}/events/public
     const username = "tjas01";
-
     const $ = id => document.getElementById(id);
     const sinceDate = new Date(Date.now() - 30*24*60*60*1000); // last 30 days
 
@@ -147,35 +179,46 @@
     async function loadUser(){
       try{
         const u = await getJson(`https://api.github.com/users/${username}`);
-        $("repos").textContent = new Intl.NumberFormat().format(u.public_repos);
-      }catch(e){ /* leave dashes */ }
+        $("repos").textContent = new Intl.NumberFormat().format(u.public_repos ?? 0);
+        $("followers").textContent = new Intl.NumberFormat().format(u.followers ?? 0);
+      }catch(e){/* leave dashes */}
     }
 
-    async function loadStars(){
+    async function loadReposUpdated(){
+      // Counts repos updated within last 30 days (public)
       try{
-        let page=1, stars=0, batch=[];
+        let page=1, count=0, batch=[];
         do{
-          batch = await getJson(`https://api.github.com/users/${username}/repos?per_page=100&page=${page++}`);
-          for(const repo of batch) stars += repo.stargazers_count || 0;
-        }while(batch.length===100 && page<6); // safeguard up to 500 repos
-        $("stars").textContent = new Intl.NumberFormat().format(stars);
-      }catch(e){ /* leave dashes */ }
+          batch = await getJson(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated&page=${page++}`);
+          for(const repo of batch){
+            if(repo.updated_at && new Date(repo.updated_at) >= sinceDate) count++;
+          }
+        }while(batch.length===100 && page<=6); // cap at 500 repos
+        $("updated").textContent = count;
+      }catch(e){/* leave dashes */}
     }
 
     async function loadPushes(){
+      // Count PushEvent items in the last 30 days from public events (paginated)
       try{
-        const events = await getJson(`https://api.github.com/users/${username}/events/public?per_page=100`);
-        let pushes = 0;
-        for(const ev of events){
-          if(ev.type === "PushEvent" && new Date(ev.created_at) >= sinceDate){
-            pushes += 1;
+        let page=1, pushes=0, batch=[], keepGoing=true;
+        while(keepGoing && page<=10){ // safety cap
+          batch = await getJson(`https://api.github.com/users/${username}/events/public?per_page=100&page=${page++}`);
+          if(batch.length===0) break;
+          for(const ev of batch){
+            const t = new Date(ev.created_at);
+            if(t < sinceDate){ keepGoing=false; break; }
+            if(ev.type === "PushEvent") pushes += 1;
           }
+          if(batch.length < 100) break;
         }
         $("pushes").textContent = pushes;
-      }catch(e){ /* leave dashes */ }
+      }catch(e){/* leave dashes */}
     }
 
-    loadUser(); loadStars(); loadPushes();
+    loadUser();
+    loadReposUpdated();
+    loadPushes();
     document.getElementById('y').textContent=new Date().getFullYear();
   </script>
 </body>
