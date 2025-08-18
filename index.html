@@ -42,7 +42,7 @@
     h1{margin:0 0 6px; font-size:clamp(32px,6vw,48px); letter-spacing:.2px}
     .role{
       margin:0 2px 10px; color:#173252; font-style:italic; font-weight:700;
-      font-size:clamp(18px, 3.2vw, 26px); /* larger per request */
+      font-size:clamp(18px, 3.2vw, 26px);
     }
     .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:8px}
     .btn{
@@ -121,11 +121,9 @@
 
       <!-- Intro -->
       <div class="summary" aria-labelledby="sum-h">
-        <h2 id="sum-h">About</h2>
+        <h2 id="sum-h">Intro</h2>
         <p style="margin:0">
-          I build decision-ready analytics and lightweight automations. My work spans Power BI dashboards, Python/n8n ETL, and practical data governance that keeps reports reliable. I apply
-          <strong>supervised</strong> and <strong>unsupervised</strong> machine learning (classification, clustering, anomaly detection), plus
-          <strong>regression analysis</strong> for forecasting and impact measurement—always tied to business outcomes.
+          I turn messy, multi-source data into decision-ready insights. I build executive-grade Power BI dashboards, automate ETL with Python and n8n/Microsoft Fabric, and apply pragmatic data governance so metrics stay reliable. My toolkit includes SQL, Databricks, BigQuery, Docker, and GitHub Actions, with applied ML—supervised and unsupervised methods (regression, clustering, recommender systems, basic neural networks)—to forecast trends and surface patterns. I communicate clearly with nontechnical stakeholders and have presented to 250+ audiences.
         </p>
       </div>
     </section>
@@ -180,7 +178,6 @@
             if(t < sinceDate){ keepGoing=false; break; }
             if(ev.type === "PushEvent"){
               pushes += 1;
-              // payload.size is number of commits in the push
               if(ev.payload && typeof ev.payload.size === "number") commits += ev.payload.size;
             }
           }
