@@ -111,17 +111,17 @@
         </a>
       </div>
 
-      <!-- GitHub mini-stats -->
+      <!-- GitHub stats -->
       <div class="stats" id="stats">
         <div class="stat"><div class="k" id="repos">—</div><div class="l">Public Repos</div></div>
-        <div class="stat"><div class="k" id="commits">—</div><div class="l">Commits (30d)</div></div>
-        <div class="stat"><div class="k" id="updated">—</div><div class="l">Repos Updated (30d)</div></div>
-        <div class="stat"><div class="k" id="pushes">—</div><div class="l">Pushes (30d)</div></div>
+        <div class="stat"><div class="k" id="commits">—</div><div class="l">Commits (lifetime)</div></div>
+        <div class="stat"><div class="k" id="updated">—</div><div class="l">Repos Updated (lifetime)</div></div>
+        <div class="stat"><div class="k" id="pushes">—</div><div class="l">Pushes (lifetime)</div></div>
       </div>
 
-      <!-- Intro -->
+      <!-- About -->
       <div class="summary" aria-labelledby="sum-h">
-        <h2 id="sum-h">Intro</h2>
+        <h2 id="sum-h">About</h2>
         <p style="margin:0">
           I turn messy, multi-source data into decision-ready insights. I build executive-grade Power BI dashboards, automate ETL with Python and n8n/Microsoft Fabric, and apply pragmatic data governance so metrics stay reliable. My toolkit includes SQL, Databricks, BigQuery, Docker, and GitHub Actions, with applied ML—supervised and unsupervised methods (regression, clustering, recommender systems, basic neural networks)—to forecast trends and surface patterns. I communicate clearly with nontechnical stakeholders and have presented to 250+ audiences.
         </p>
@@ -132,11 +132,8 @@
   </main>
 
   <script>
-    // Live GitHub stats (public data; 60/hr unauthenticated)
-    // Endpoints: /users/{username}, /users/{username}/repos, /users/{username}/events/public
     const username = "tjas01";
     const $ = id => document.getElementById(id);
-    const sinceDate = new Date(Date.now() - 30*24*60*60*1000); // last 30 days
 
     async function getJson(url){
       const r = await fetch(url, {headers: {"Accept":"application/vnd.github+json"}});
@@ -148,7 +145,7 @@
       try{
         const u = await getJson(`https://api.github.com/users/${username}`);
         $("repos").textContent = new Intl.NumberFormat().format(u.public_repos ?? 0);
-      }catch(e){/* leave dashes */}
+      }catch(e){}
     }
 
     async function loadReposUpdated(){
@@ -156,26 +153,19 @@
         let page=1, count=0, batch=[];
         do{
           batch = await getJson(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated&page=${page++}`);
-          for(const repo of batch){
-            if(repo.updated_at && new Date(repo.updated_at) >= sinceDate) count++;
-          }
+          for(const repo of batch){ if(repo.updated_at) count++; }
         }while(batch.length===100 && page<=6);
         $("updated").textContent = count;
       }catch(e){}
     }
 
     async function loadPushesAndCommits(){
-      // From public events, within 30 days:
-      // - Pushes: count PushEvent
-      // - Commits: sum payload.size (commit count)
       try{
-        let page=1, pushes=0, commits=0, keepGoing=true;
-        while(keepGoing && page<=10){
+        let page=1, pushes=0, commits=0;
+        while(page<=10){
           const batch = await getJson(`https://api.github.com/users/${username}/events/public?per_page=100&page=${page++}`);
           if(batch.length===0) break;
           for(const ev of batch){
-            const t = new Date(ev.created_at);
-            if(t < sinceDate){ keepGoing=false; break; }
             if(ev.type === "PushEvent"){
               pushes += 1;
               if(ev.payload && typeof ev.payload.size === "number") commits += ev.payload.size;
