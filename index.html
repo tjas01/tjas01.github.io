@@ -73,34 +73,8 @@
     .summary h2{margin:0 0 8px; font-size:18px}
     footer{margin:26px 0 6px; color:#5e6f86; text-align:center}
 
-    /* --- Certification card --- */
-    .certs{display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:16px}
-    .cert-card{
-      display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:14px;
-      background:#0b1a30; color:#fff; border:1px solid #10345f;
-      border-radius:18px; padding:12px 14px; text-decoration:none;
-      box-shadow:0 8px 22px rgba(14,28,56,.22), inset 0 1px 0 #ffffff22;
-      transition: transform .06s ease, box-shadow .2s ease; min-width:280px; max-width:560px;
-    }
-    .cert-card:hover{ transform:translateY(-1px); box-shadow:0 10px 28px rgba(14,28,56,.26) }
-    .cert-badge{
-      width:42px; height:42px; border-radius:12px;
-      display:grid; place-items:center;
-      background:linear-gradient(135deg,#1e3a8a,#3b82f6);
-      box-shadow:inset 0 1px 0 #ffffff33, 0 4px 12px rgba(0,0,0,.25);
-    }
-    .cert-badge svg{width:24px; height:24px; color:#fff}
-    .cert-text b{font-size:14px; letter-spacing:.2px}
-    .cert-text .sub{display:block; font-size:12px; opacity:.9; margin-top:2px}
-    .cert-meta{
-      display:flex; flex-direction:column; align-items:flex-end; gap:2px;
-      font-size:11px; opacity:.85
-    }
-    .cert-meta code{
-      background:#0f2242; border:1px solid #1b3f77; padding:2px 6px; border-radius:999px;
-      color:#cce7ff; font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    }
-    .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+    .certs{margin-top:20px; display:flex; justify-content:center}
+    .certs img{height:90px}
   </style>
 </head>
 <body>
@@ -140,27 +114,13 @@
         </a>
       </div>
 
-      <!-- Certification (Microsoft PL-300) -->
-      <div class="certs" aria-label="Certifications">
-        <a class="cert-card"
-           href="https://learn.microsoft.com/api/credentials/share/en-us/TejasVyasam-8587/A22FE37A860DF2A3?sharingId=53BC4AA26E32FB17"
+      <!-- Certification Badge -->
+      <div class="certs">
+        <a href="https://learn.microsoft.com/api/credentials/share/en-us/TejasVyasam-8587/A22FE37A860DF2A3?sharingId=53BC4AA26E32FB17"
            target="_blank" rel="noopener"
-           title="Credential ID: A22FE37A860DF2A3 • Certification number: B4BD67-0475DJ">
-          <div class="cert-badge" aria-hidden="true">
-            <!-- simple check-shield -->
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2l7 3v6c0 5.4-3.6 8.9-7 10-3.4-1.1-7-4.6-7-10V5l7-3z" opacity=".9"/>
-              <path d="M10.2 12.5l1.9 1.9 4-4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="cert-text">
-            <b>Microsoft Certified</b>
-            <span class="sub">Power BI Data Analyst Associate (PL-300)</span>
-          </div>
-          <div class="cert-meta" aria-hidden="true">
-            <code>A22FE37A860DF2A3</code>
-            <code>B4BD67-0475DJ</code>
-          </div>
+           title="View verified certification">
+          <img src="https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg?branch=main"
+               alt="Microsoft Certified: Power BI Data Analyst Associate Badge">
         </a>
       </div>
 
@@ -176,7 +136,7 @@
       <div class="summary" aria-labelledby="sum-h">
         <h2 id="sum-h">About Me</h2>
         <p style="margin:0">
-          I convert multi-source data into decision-ready insights. I build executive-grade Power BI dashboards (<strong>PL-300 certified</strong>), automate ETL with Python, n8n, and Microsoft Fabric, and apply practical data governance so metrics remain trustworthy. My toolkit includes SQL, BigQuery, and Docker, with applied machine learning across regression, clustering, recommender systems, <em>gradient boosting</em>, and <em>neural networks</em> to forecast trends and surface patterns. I communicate clearly with non-technical stakeholders and have delivered weekly readouts to audiences of 250+.
+          I convert multi-source data into decision-ready insights. I build executive-grade Power BI dashboards (<strong>PL-300 certified</strong>), automate ETL with Python, n8n, and Microsoft Fabric, and apply practical data governance so metrics remain trustworthy. My toolkit includes SQL and BigQuery, with applied machine learning across regression, clustering, recommender systems, <em>gradient boosting</em>, and <em>neural networks</em> to forecast trends and surface patterns. I communicate clearly with non-technical stakeholders and have delivered weekly readouts to audiences of 250+.
         </p>
       </div>
     </section>
