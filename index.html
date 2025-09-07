@@ -30,28 +30,47 @@
     .wrap{max-width:1024px; margin-inline:auto; padding:40px 20px}
     .hero{
       background:var(--card);
-      border-radius:var(--radius); padding:48px 28px 32px; box-shadow:var(--shadow);
+      border-radius:var(--radius); padding:40px 28px 32px; box-shadow:var(--shadow);
     }
 
-    /* Header with badge + name/role on left and CTAs on right */
+    /* ===== Header (badge | name+role | vertical buttons) ===== */
     .header{
-      display:grid; grid-template-columns:1fr auto; gap:18px; align-items:center;
-      justify-content:space-between; margin-bottom:20px;
+      display:grid; grid-template-columns:auto 1fr auto; gap:18px; align-items:center;
     }
-    .profile{
-      display:flex; gap:18px; align-items:center;
+    /* keep name on one line via nowrap + clamp font size */
+    .nameblock{
+      min-width:0; /* so text can shrink */
+      white-space:nowrap;
     }
-    .profile img{
-      height:108px; width:auto; display:block;
+    h1{
+      margin:0;
+      font-weight:800;
+      font-size:clamp(28px, 5.2vw, 44px);  /* scales but avoids wrap */
+      letter-spacing:.2px;
+      line-height:1.15;
+    }
+    .role{
+      margin:6px 0 0;
+      color:#173252; font-style:italic; font-weight:700;
+      font-size:clamp(16px, 2.8vw, 22px);
+      line-height:1.15;
+    }
+
+    /* Make the badge match the height of the name+role block */
+    .badgewrap{
+      display:flex; align-items:center; height:100%;
+    }
+    .badgewrap a{display:block; line-height:0}
+    .badgewrap img{
+      display:block;
+      height:calc( (1.15 * clamp(28px,5.2vw,44px)) + (1.15 * clamp(16px,2.8vw,22px)) + 18px ); /* name + role + spacing */
+      width:auto;
       filter: drop-shadow(0 10px 22px rgba(15,30,60,.28));
     }
-    h1{margin:0; font-size:clamp(32px,6vw,48px); letter-spacing:.2px}
-    .role{
-      margin:4px 0 0; color:#173252; font-style:italic; font-weight:700;
-      font-size:clamp(18px, 3.2vw, 26px);
-    }
 
-    .cta{display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-end}
+    .ctacol{
+      display:flex; flex-direction:column; gap:10px; align-items:flex-end;
+    }
     .btn{
       appearance:none; border:0; cursor:pointer; font-weight:600;
       padding:12px 16px; border-radius:14px; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
@@ -80,13 +99,17 @@
       box-shadow:0 4px 10px rgba(15,30,60,.08);
     }
     .summary h2{margin:0 0 8px; font-size:18px}
+    .summary ul{margin:10px 0 0 20px}
+    .summary li{margin:6px 0}
+
     footer{margin:26px 0 6px; color:#5e6f86; text-align:center}
 
     /* Responsive */
-    @media (max-width:700px){
-      .header{grid-template-columns:1fr; text-align:center;}
-      .profile{flex-direction:column;}
-      .cta{justify-content:center; margin-top:12px;}
+    @media (max-width:760px){
+      .header{grid-template-columns:1fr; gap:12px; text-align:center}
+      .badgewrap{justify-content:center}
+      .ctacol{flex-direction:row; justify-content:center; align-items:center; flex-wrap:wrap}
+      .nameblock{white-space:normal} /* allow wrap on very small phones */
     }
   </style>
 </head>
@@ -95,20 +118,21 @@
     <section class="hero" aria-labelledby="title">
       <!-- Header -->
       <div class="header">
-        <div class="profile">
+        <div class="badgewrap">
           <a href="https://learn.microsoft.com/api/credentials/share/en-us/TejasVyasam-8587/A22FE37A860DF2A3?sharingId=53BC4AA26E32FB17"
              target="_blank" rel="noopener"
              title="Microsoft Certified: Power BI Data Analyst Associate (PL-300)">
             <img src="https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg?branch=main"
                  alt="Microsoft Certified: Power BI Data Analyst Associate badge">
           </a>
-          <div>
-            <h1 id="title">Tejas Vyasam</h1>
-            <p class="role"><em>Data Analyst</em></p>
-          </div>
         </div>
 
-        <div class="cta">
+        <div class="nameblock">
+          <h1 id="title">Tejas Vyasam</h1>
+          <div class="role"><em>Data Analyst</em></div>
+        </div>
+
+        <div class="ctacol" aria-label="Quick links">
           <a class="btn" href="https://github.com/tjas01" target="_blank" rel="noopener" aria-label="GitHub repository list">
             <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .2a8 8 0 0 0-2.53 15.6c.4.07.55-.17.55-.38v-1.33c-2.25.49-2.72-1.05-2.72-1.05-.36-.92-.88-1.17-.88-1.17-.72-.49.06-.48.06-.48.8.06 1.22.83 1.22.83.71 1.22 1.86.87 2.32.66.07-.52.28-.87.5-1.07-1.79-.2-3.67-.9-3.67-4.02 0-.89.32-1.61.84-2.18-.08-.21-.36-1.04.08-2.17 0 0 .67-.22 2.2.83a7.5 7.5 0 0 1 4 0c1.53-1.05 2.2-.83 2.2-.83.44 1.13.16 1.96.08 2.17.52.57.84 1.29.84 2.18 0 3.13-1.88 3.82-3.68 4.02.29.25.54.74.54 1.5v2.22c0 .21.15.46.55.38A8 8 0 0 0 8 .2Z"/></svg>
             Repository
@@ -142,13 +166,16 @@
       <div class="summary" aria-labelledby="sum-h">
         <h2 id="sum-h">About Me</h2>
         <p style="margin:0">
-          Hi, I’m Tejas — a data analyst who loves turning raw information into insights people can actually use.  
-          I specialize in building clear and interactive Power BI dashboards (<strong>PL-300 certified</strong>) and enjoy making data stories accessible to both technical and non-technical audiences.  
-          At Vosyn.ai, I delivered live dashboards to 250+ stakeholders, explored automation with Python, n8n, Make, and Microsoft Fabric, and designed lightweight governance frameworks to keep reporting accurate and reliable.  
-          Earlier, I worked across supply chain, ERP, and IoT analytics — from supermarket KPIs in Brunei to RFID artifact tracking in India — experiences that taught me how diverse and fun data challenges can be.  
-          My toolkit spans SQL, Excel, BigQuery, Tableau, Looker Studio, and machine learning techniques like regression, clustering, recommender systems, <em>gradient boosting</em>, and <em>neural networks</em>.  
-          Outside of dashboards and datasets, I enjoy making complex things simple — whether that’s explaining KPIs in a readout or setting up automations that save teams hours each week.
+          Hi, I’m Tejas — a Power BI–focused data analyst (<strong>PL-300 certified</strong>) who helps teams make faster, better decisions with clean metrics, clear dashboards, and pragmatic automation.
         </p>
+        <ul>
+          <li><strong>Executive dashboards that land:</strong> design and ship Power BI views with “how-to-read” notes; present weekly readouts to large audiences (250+).</li>
+          <li><strong>Automation that saves time:</strong> explore and implement ETL flows using Python, n8n, Make, and Microsoft Fabric to cut manual effort and improve validation.</li>
+          <li><strong>Trustworthy data:</strong> set lightweight governance (data dictionary, ownership, refresh cadence) and run recurring data-quality checks for reliable KPIs.</li>
+          <li><strong>Analysis breadth:</strong> SQL and Excel first; BigQuery when scale is needed; experience across supply chain, ERP, and IoT reporting.</li>
+          <li><strong>Applied ML when it helps:</strong> regression, clustering, recommender systems, <em>gradient boosting</em>, and <em>neural networks</em> for patterns and forecasts.</li>
+          <li><strong>Change enablement:</strong> quick training and walkthroughs that raise data submission consistency and reduce correction cycles.</li>
+        </ul>
       </div>
     </section>
 
