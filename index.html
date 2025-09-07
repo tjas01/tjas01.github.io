@@ -30,16 +30,19 @@
     .wrap{max-width:1024px; margin-inline:auto; padding:40px 20px}
     .hero{
       background:var(--card);
-      border-radius:var(--radius); padding:56px 28px 32px; box-shadow:var(--shadow);
+      border-radius:var(--radius); padding:48px 28px 32px; box-shadow:var(--shadow);
     }
 
-    /* Header with badge + name side by side */
+    /* Header with badge + name/role on left and CTAs on right */
     .header{
-      display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:center;
-      justify-items:start; margin-bottom:14px;
+      display:grid; grid-template-columns:1fr auto; gap:18px; align-items:center;
+      justify-content:space-between; margin-bottom:20px;
     }
-    .header img{
-      height:92px; width:auto; display:block;
+    .profile{
+      display:flex; gap:18px; align-items:center;
+    }
+    .profile img{
+      height:108px; width:auto; display:block;
       filter: drop-shadow(0 10px 22px rgba(15,30,60,.28));
     }
     h1{margin:0; font-size:clamp(32px,6vw,48px); letter-spacing:.2px}
@@ -48,7 +51,7 @@
       font-size:clamp(18px, 3.2vw, 26px);
     }
 
-    .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:16px}
+    .cta{display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-end}
     .btn{
       appearance:none; border:0; cursor:pointer; font-weight:600;
       padding:12px 16px; border-radius:14px; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
@@ -80,48 +83,51 @@
     footer{margin:26px 0 6px; color:#5e6f86; text-align:center}
 
     /* Responsive */
-    @media (max-width:600px){
-      .header{grid-template-columns:1fr; justify-items:center; text-align:center;}
-      .header img{height:76px; margin-bottom:8px;}
+    @media (max-width:700px){
+      .header{grid-template-columns:1fr; text-align:center;}
+      .profile{flex-direction:column;}
+      .cta{justify-content:center; margin-top:12px;}
     }
   </style>
 </head>
 <body>
   <main class="wrap">
     <section class="hero" aria-labelledby="title">
-      <!-- Header: badge + name -->
+      <!-- Header -->
       <div class="header">
-        <a href="https://learn.microsoft.com/api/credentials/share/en-us/TejasVyasam-8587/A22FE37A860DF2A3?sharingId=53BC4AA26E32FB17"
-           target="_blank" rel="noopener"
-           title="Microsoft Certified: Power BI Data Analyst Associate (PL-300)">
-          <img src="https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg?branch=main"
-               alt="Microsoft Certified: Power BI Data Analyst Associate badge">
-        </a>
-        <div>
-          <h1 id="title">Tejas Vyasam</h1>
-          <p class="role"><em>Data Analyst</em></p>
+        <div class="profile">
+          <a href="https://learn.microsoft.com/api/credentials/share/en-us/TejasVyasam-8587/A22FE37A860DF2A3?sharingId=53BC4AA26E32FB17"
+             target="_blank" rel="noopener"
+             title="Microsoft Certified: Power BI Data Analyst Associate (PL-300)">
+            <img src="https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg?branch=main"
+                 alt="Microsoft Certified: Power BI Data Analyst Associate badge">
+          </a>
+          <div>
+            <h1 id="title">Tejas Vyasam</h1>
+            <p class="role"><em>Data Analyst</em></p>
+          </div>
         </div>
-      </div>
 
-      <div class="cta">
-        <a class="btn" href="https://github.com/tjas01" target="_blank" rel="noopener" aria-label="GitHub repository list">
-          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .2a8 8 0 0 0-2.53 15.6c.4.07.55-.17.55-.38v-1.33c-2.25.49-2.72-1.05-2.72-1.05-.36-.92-.88-1.17-.88-1.17-.72-.49.06-.48.06-.48.8.06 1.22.83 1.22.83.71 1.22 1.86.87 2.32.66.07-.52.28-.87.5-1.07-1.79-.2-3.67-.9-3.67-4.02 0-.89.32-1.61.84-2.18-.08-.21-.36-1.04.08-2.17 0 0 .67-.22 2.2.83a7.5 7.5 0 0 1 4 0c1.53-1.05 2.2-.83 2.2-.83.44 1.13.16 1.96.08 2.17.52.57.84 1.29.84 2.18 0 3.13-1.88 3.82-3.68 4.02.29.25.54.74.54 1.5v2.22c0 .21.15.46.55.38A8 8 0 0 0 8 .2Z"/></svg>
-          Repository
-        </a>
+        <div class="cta">
+          <a class="btn" href="https://github.com/tjas01" target="_blank" rel="noopener" aria-label="GitHub repository list">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .2a8 8 0 0 0-2.53 15.6c.4.07.55-.17.55-.38v-1.33c-2.25.49-2.72-1.05-2.72-1.05-.36-.92-.88-1.17-.88-1.17-.72-.49.06-.48.06-.48.8.06 1.22.83 1.22.83.71 1.22 1.86.87 2.32.66.07-.52.28-.87.5-1.07-1.79-.2-3.67-.9-3.67-4.02 0-.89.32-1.61.84-2.18-.08-.21-.36-1.04.08-2.17 0 0 .67-.22 2.2.83a7.5 7.5 0 0 1 4 0c1.53-1.05 2.2-.83 2.2-.83.44 1.13.16 1.96.08 2.17.52.57.84 1.29.84 2.18 0 3.13-1.88 3.82-3.68 4.02.29.25.54.74.54 1.5v2.22c0 .21.15.46.55.38A8 8 0 0 0 8 .2Z"/></svg>
+            Repository
+          </a>
 
-        <a class="btn ghost"
-           href="https://docs.google.com/document/d/1yllgDKpD88WgszzXMBIyP7JBR5FXneLldbGwTmUzfyw/preview"
-           target="_blank" rel="noopener" aria-label="Open résumé in browser">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="1.8"/></svg>
-          Résumé
-        </a>
+          <a class="btn ghost"
+             href="https://docs.google.com/document/d/1yllgDKpD88WgszzXMBIyP7JBR5FXneLldbGwTmUzfyw/preview"
+             target="_blank" rel="noopener" aria-label="Open résumé in browser">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="1.8"/></svg>
+            Résumé
+          </a>
 
-        <a class="btn ghost"
-           href="https://www.linkedin.com/in/tejasvyasam/"
-           target="_blank" rel="noopener" aria-label="Open LinkedIn profile">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.1c0-1.69-.03-3.87-2.36-3.87-2.36 0-2.72 1.84-2.72 3.75V23h-4V8z"/></svg>
-          LinkedIn Profile
-        </a>
+          <a class="btn ghost"
+             href="https://www.linkedin.com/in/tejasvyasam/"
+             target="_blank" rel="noopener" aria-label="Open LinkedIn profile">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.1c0-1.69-.03-3.87-2.36-3.87-2.36 0-2.72 1.84-2.72 3.75V23h-4V8z"/></svg>
+            LinkedIn Profile
+          </a>
+        </div>
       </div>
 
       <!-- Stats -->
