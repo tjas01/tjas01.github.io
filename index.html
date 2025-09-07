@@ -7,7 +7,6 @@
   <meta name="description" content="Portfolio of Tejas Vyasam — Data Analyst." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
   <style>
     :root{
       --bg-start:#eaf5ff;
@@ -33,43 +32,43 @@
       border-radius:var(--radius); padding:40px 28px 32px; box-shadow:var(--shadow);
     }
 
-    /* ===== Header (badge | name+role | vertical buttons) ===== */
+    /* Header: badge | name+role */
     .header{
-      display:grid; grid-template-columns:auto 1fr auto; gap:18px; align-items:center;
-    }
-    /* keep name on one line via nowrap + clamp font size */
-    .nameblock{
-      min-width:0; /* so text can shrink */
-      white-space:nowrap;
-    }
-    h1{
-      margin:0;
-      font-weight:800;
-      font-size:clamp(28px, 5.2vw, 44px);  /* scales but avoids wrap */
-      letter-spacing:.2px;
-      line-height:1.15;
-    }
-    .role{
-      margin:6px 0 0;
-      color:#173252; font-style:italic; font-weight:700;
-      font-size:clamp(16px, 2.8vw, 22px);
-      line-height:1.15;
-    }
-
-    /* Make the badge match the height of the name+role block */
-    .badgewrap{
-      display:flex; align-items:center; height:100%;
+      display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:center;
     }
     .badgewrap a{display:block; line-height:0}
     .badgewrap img{
       display:block;
-      height:calc( (1.15 * clamp(28px,5.2vw,44px)) + (1.15 * clamp(16px,2.8vw,22px)) + 18px ); /* name + role + spacing */
+      height:120px; /* big and confident */
       width:auto;
-      filter: drop-shadow(0 10px 22px rgba(15,30,60,.28));
+      filter: drop-shadow(0 12px 24px rgba(15,30,60,.28));
+    }
+    .nameblock{min-width:0; white-space:nowrap}
+    h1{
+      margin:0; font-weight:800;
+      font-size:clamp(30px, 5.4vw, 46px);
+      letter-spacing:.2px; line-height:1.1;
+    }
+    .role{
+      margin:6px 0 0; color:#173252; font-style:italic; font-weight:700;
+      font-size:clamp(17px, 3vw, 24px); line-height:1.1;
     }
 
-    .ctacol{
-      display:flex; flex-direction:column; gap:10px; align-items:flex-end;
+    /* Tabs row */
+    .tabs{
+      margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;
+      border-bottom:1px solid #9ec6e8; padding-bottom:8px;
+    }
+    .tab{
+      background:#ffffffde; border:1px solid #e7f1fb; color:var(--ink);
+      padding:10px 14px; border-radius:12px; text-decoration:none; font-weight:600;
+      box-shadow:0 4px 10px rgba(15,30,60,.08);
+    }
+    .tab.active{background:#1f6fb2; color:#fff; border-color:#1f6fb2}
+
+    /* Horizontal actions row */
+    .actions{
+      margin-top:14px; display:flex; gap:12px; justify-content:space-between; flex-wrap:wrap;
     }
     .btn{
       appearance:none; border:0; cursor:pointer; font-weight:600;
@@ -77,14 +76,16 @@
       transition: transform .06s ease, box-shadow .2s ease;
       box-shadow: 0 4px 10px rgba(15,30,60,.15);
       color:#fff; background:var(--accent);
+      flex:1 1 200px; justify-content:center;
     }
-    .btn:hover{transform:translateY(-1px)}
     .btn.ghost{background:#fff; color:var(--ink); border:1px solid #e9f2ff}
+    .btn:hover{transform:translateY(-1px)}
     .btn svg{width:18px; height:18px}
 
+    /* Stats */
     .stats{
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-      gap:12px; margin-top:20px;
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:12px; margin-top:18px;
     }
     .stat{
       background:#ffffffd9; border:1px solid #e7f1fb; border-radius:14px; padding:12px 14px;
@@ -93,23 +94,24 @@
     .stat .k{font-size:22px; font-weight:800}
     .stat .l{color:var(--muted); font-size:13px}
 
+    /* About */
     .summary{
       margin-top:18px; text-align:left;
       background:#ffffffd9; border:1px solid #e7f1fb; border-radius:14px; padding:16px 18px;
       box-shadow:0 4px 10px rgba(15,30,60,.08);
     }
     .summary h2{margin:0 0 8px; font-size:18px}
-    .summary ul{margin:10px 0 0 20px}
+    .summary p{margin:0 0 8px}
+    .summary ul{margin:8px 0 0 20px}
     .summary li{margin:6px 0}
 
     footer{margin:26px 0 6px; color:#5e6f86; text-align:center}
 
     /* Responsive */
-    @media (max-width:760px){
-      .header{grid-template-columns:1fr; gap:12px; text-align:center}
-      .badgewrap{justify-content:center}
-      .ctacol{flex-direction:row; justify-content:center; align-items:center; flex-wrap:wrap}
-      .nameblock{white-space:normal} /* allow wrap on very small phones */
+    @media (max-width:700px){
+      .header{grid-template-columns:1fr; text-align:center}
+      .badgewrap img{height:100px}
+      .nameblock{white-space:normal}
     }
   </style>
 </head>
@@ -126,38 +128,41 @@
                  alt="Microsoft Certified: Power BI Data Analyst Associate badge">
           </a>
         </div>
-
         <div class="nameblock">
           <h1 id="title">Tejas Vyasam</h1>
           <div class="role"><em>Data Analyst</em></div>
         </div>
-
-        <div class="ctacol" aria-label="Quick links">
-          <a class="btn" href="https://github.com/tjas01" target="_blank" rel="noopener" aria-label="GitHub repository list">
-            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .2a8 8 0 0 0-2.53 15.6c.4.07.55-.17.55-.38v-1.33c-2.25.49-2.72-1.05-2.72-1.05-.36-.92-.88-1.17-.88-1.17-.72-.49.06-.48.06-.48.8.06 1.22.83 1.22.83.71 1.22 1.86.87 2.32.66.07-.52.28-.87.5-1.07-1.79-.2-3.67-.9-3.67-4.02 0-.89.32-1.61.84-2.18-.08-.21-.36-1.04.08-2.17 0 0 .67-.22 2.2.83a7.5 7.5 0 0 1 4 0c1.53-1.05 2.2-.83 2.2-.83.44 1.13.16 1.96.08 2.17.52.57.84 1.29.84 2.18 0 3.13-1.88 3.82-3.68 4.02.29.25.54.74.54 1.5v2.22c0 .21.15.46.55.38A8 8 0 0 0 8 .2Z"/></svg>
-            Repository
-          </a>
-
-          <a class="btn ghost"
-             href="https://docs.google.com/document/d/1yllgDKpD88WgszzXMBIyP7JBR5FXneLldbGwTmUzfyw/preview"
-             target="_blank" rel="noopener" aria-label="Open résumé in browser">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="1.8"/></svg>
-            Résumé
-          </a>
-
-          <a class="btn ghost"
-             href="https://www.linkedin.com/in/tejasvyasam/"
-             target="_blank" rel="noopener" aria-label="Open LinkedIn profile">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.1c0-1.69-.03-3.87-2.36-3.87-2.36 0-2.72 1.84-2.72 3.75V23h-4V8z"/></svg>
-            LinkedIn Profile
-          </a>
-        </div>
       </div>
 
-      <!-- Stats -->
-      <div class="stats" id="stats" aria-label="GitHub activity stats">
+      <!-- Tabs -->
+      <nav class="tabs" aria-label="Primary">
+        <a class="tab active" href="./">Overview</a>
+        <a class="tab" href="portfolio.html">Portfolio</a>
+      </nav>
+
+      <!-- Actions (horizontal) -->
+      <div class="actions" aria-label="Quick Actions">
+        <a class="btn" href="https://github.com/tjas01" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .2a8 8 0 0 0-2.53 15.6c.4.07.55-.17.55-.38v-1.33c-2.25.49-2.72-1.05-2.72-1.05-.36-.92-.88-1.17-.88-1.17-.72-.49.06-.48.06-.48.8.06 1.22.83 1.22.83.71 1.22 1.86.87 2.32.66.07-.52.28-.87.5-1.07-1.79-.2-3.67-.9-3.67-4.02 0-.89.32-1.61.84-2.18-.08-.21-.36-1.04.08-2.17 0 0 .67-.22 2.2.83a7.5 7.5 0 0 1 4 0c1.53-1.05 2.2-.83 2.2-.83.44 1.13.16 1.96.08 2.17.52.57.84 1.29.84 2.18 0 3.13-1.88 3.82-3.68 4.02.29.25.54.74.54 1.5v2.22c0 .21.15.46.55.38A8 8 0 0 0 8 .2Z"/></svg>
+          Repository
+        </a>
+        <a class="btn ghost" href="https://docs.google.com/document/d/1yllgDKpD88WgszzXMBIyP7JBR5FXneLldbGwTmUzfyw/preview" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.8"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="1.8"/></svg>
+          Résumé
+        </a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/tejasvyasam/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.1c0-1.69-.03-3.87-2.36-3.87-2.36 0-2.72 1.84-2.72 3.75V23h-4V8z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+
+      <!-- Stats (includes auto-updating Years in Data) -->
+      <div class="stats" id="stats">
+        <div class="stat">
+          <div class="k" id="years">—</div>
+          <div class="l">Years in Data</div>
+        </div>
         <div class="stat"><div class="k" id="repos">—</div><div class="l">Public Repos</div></div>
-        <div class="stat"><div class="k" id="commits">—</div><div class="l">Commits</div></div>
         <div class="stat"><div class="k" id="updated">—</div><div class="l">Repos Updated</div></div>
         <div class="stat"><div class="k" id="pushes">—</div><div class="l">Pushes</div></div>
       </div>
@@ -165,16 +170,16 @@
       <!-- About Me -->
       <div class="summary" aria-labelledby="sum-h">
         <h2 id="sum-h">About Me</h2>
-        <p style="margin:0">
-          Hi, I’m Tejas — a Power BI–focused data analyst (<strong>PL-300 certified</strong>) who helps teams make faster, better decisions with clean metrics, clear dashboards, and pragmatic automation.
+        <p>
+          I help leaders and teams make confident, data-driven decisions. My background spans executive reporting, automation, data governance, and applied machine learning. I am <strong>Microsoft PL-300 certified</strong> and comfortable presenting insights to large audiences.
         </p>
         <ul>
-          <li><strong>Executive dashboards that land:</strong> design and ship Power BI views with “how-to-read” notes; present weekly readouts to large audiences (250+).</li>
-          <li><strong>Automation that saves time:</strong> explore and implement ETL flows using Python, n8n, Make, and Microsoft Fabric to cut manual effort and improve validation.</li>
-          <li><strong>Trustworthy data:</strong> set lightweight governance (data dictionary, ownership, refresh cadence) and run recurring data-quality checks for reliable KPIs.</li>
-          <li><strong>Analysis breadth:</strong> SQL and Excel first; BigQuery when scale is needed; experience across supply chain, ERP, and IoT reporting.</li>
-          <li><strong>Applied ML when it helps:</strong> regression, clustering, recommender systems, <em>gradient boosting</em>, and <em>neural networks</em> for patterns and forecasts.</li>
-          <li><strong>Change enablement:</strong> quick training and walkthroughs that raise data submission consistency and reduce correction cycles.</li>
+          <li><strong>Executive dashboards:</strong> deliver clear Power BI views with guidance notes and weekly readouts.</li>
+          <li><strong>Automation:</strong> design ETL flows with Python, n8n, Make, and Microsoft Fabric that reduce manual effort and increase validation.</li>
+          <li><strong>Governance and quality:</strong> establish data dictionaries, ownership, and refresh cadence; run recurring checks that keep KPIs trustworthy.</li>
+          <li><strong>Analysis:</strong> SQL and Excel by default; BigQuery when scale is required; experience across supply chain, ERP, and IoT.</li>
+          <li><strong>Applied ML:</strong> regression, clustering, recommender systems, gradient boosting, and neural networks for pattern discovery and forecasting.</li>
+          <li><strong>Enablement:</strong> concise training and walkthroughs that improve data submission consistency and reduce correction cycles.</li>
         </ul>
       </div>
     </section>
@@ -192,13 +197,7 @@
       return r.json();
     }
 
-    async function loadUser(){
-      try{
-        const u = await getJson(`https://api.github.com/users/${username}`);
-        $("repos").textContent = new Intl.NumberFormat().format(u.public_repos ?? 0);
-      }catch(e){}
-    }
-
+    // GitHub stats (lightweight approximations)
     async function loadReposUpdated(){
       try{
         let page=1, count=0, batch=[];
@@ -209,29 +208,41 @@
         $("updated").textContent = count;
       }catch(e){}
     }
-
     async function loadPushesAndCommits(){
       try{
-        let page=1, pushes=0, commits=0;
+        let page=1, pushes=0;
         while(page<=10){
           const batch = await getJson(`https://api.github.com/users/${username}/events/public?per_page=100&page=${page++}`);
           if(batch.length===0) break;
-          for(const ev of batch){
-            if(ev.type === "PushEvent"){
-              pushes += 1;
-              if(ev.payload && typeof ev.payload.size === "number") commits += ev.payload.size;
-            }
-          }
+          for(const ev of batch){ if(ev.type === "PushEvent") pushes += 1; }
           if(batch.length < 100) break;
         }
         $("pushes").textContent = pushes;
-        $("commits").textContent = commits;
       }catch(e){}
+    }
+    async function loadUser(){
+      try{
+        const u = await getJson(`https://api.github.com/users/${username}`);
+        $("repos").textContent = new Intl.NumberFormat().format(u.public_repos ?? 0);
+      }catch(e){}
+    }
+
+    // Auto-updating "Years in Data" (start: July 2016 from resume)
+    function loadYearsInData(){
+      const start = new Date(Date.UTC(2016, 6, 1)); // 2016-07-01
+      const now = new Date();
+      // whole-year difference, rounded down
+      let years = now.getUTCFullYear() - start.getUTCFullYear();
+      const m = now.getUTCMonth() - start.getUTCMonth();
+      const d = now.getUTCDate() - start.getUTCDate();
+      if (m < 0 || (m === 0 && d < 0)) years -= 1;
+      $("years").textContent = years;
     }
 
     loadUser();
     loadReposUpdated();
     loadPushesAndCommits();
+    loadYearsInData();
     document.getElementById('y').textContent=new Date().getFullYear();
   </script>
 </body>
