@@ -54,6 +54,7 @@
     .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px}
     .tile{border-radius:12px; overflow:hidden; border:1px solid #e7f1fb; background:#fff; box-shadow:0 4px 12px rgba(15,30,60,.1); cursor:pointer}
     .tile img{width:100%; height:180px; object-fit:cover}
+    .meta{padding:8px 10px; font-size:12px; color:#5a6a80; border-top:1px solid #eef4fb}
     .modal{position:fixed; inset:0; background:rgba(10,20,40,.75); display:none; align-items:center; justify-content:center; z-index:100}
     .modal.open{display:flex}
     .modal img{max-width:92vw; max-height:86vh; border-radius:12px}
@@ -69,8 +70,14 @@
       <!-- Header -->
       <div class="header">
         <div class="badgewrap">
-          <img src="https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg?branch=main"
-               alt="Microsoft Certified: Power BI Data Analyst Associate">
+          <!-- PL-300 badge now links to your certificate -->
+          <a
+            href="https://learn.microsoft.com/api/credentials/share/en-us/TejasVyasam-8587/A22FE37A860DF2A3?sharingId=53BC4AA26E32FB17"
+            target="_blank" rel="noopener"
+            aria-label="View Microsoft PL-300 certificate">
+            <img src="https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg?branch=main"
+                 alt="Microsoft Certified: Power BI Data Analyst Associate — View certificate">
+          </a>
         </div>
         <div>
           <h1>Tejas Vyasam</h1>
@@ -124,30 +131,71 @@
     const REPO = "tjas01.github.io";
     const BRANCH = "main";
 
-    // Helper: image detection + raw url
+    // Helper: image detection + raw url + date fmt
     function isImage(name){ return /\.(png|jpe?g|gif|webp|svg)$/i.test(name); }
     function rawUrl(path){ return `https://raw.githubusercontent.com/${USER}/${REPO}/${BRANCH}/${path}`; }
+    function fmtDate(s){
+      try{
+        const d = new Date(s);
+        return d.toLocaleDateString(undefined,{year:"numeric",month:"short",day:"2-digit"});
+      }catch{ return ""; }
+    }
 
-    // Designs: list files from repo root and render tiles
+    // Designs: list files, fetch last-commit date for each image, sort by date desc, render
     async function loadDesigns(){
+      const grid = document.getElementById("grid");
+      grid.innerHTML = "";
       try{
         const url = `https://api.github.com/repos/${USER}/${REPO}/contents?ref=${BRANCH}`;
         const r = await fetch(url, {headers:{"Accept":"application/vnd.github+json"}});
-        if(!r.ok) return;
+        if(!r.ok) throw new Error("Failed to load repo contents");
         const data = await r.json();
-        const grid = document.getElementById("grid");
-        grid.innerHTML = "";
-        for(const item of data){
-          if(item.type==="file" && isImage(item.name)){
-            const src = rawUrl(item.path);
-            const div = document.createElement("div");
-            div.className = "tile";
-            div.innerHTML = `<img src="${src}" alt="${item.name}">`;
-            div.onclick = ()=>openModal(src,item.name);
-            grid.appendChild(div);
+
+        // Keep only image files in root
+        const images = data.filter(item => item.type==="file" && isImage(item.name));
+
+        // For each image, look up its most recent commit date (date added/updated)
+        const withDates = await Promise.allSettled(images.map(async (item) => {
+          const commitsUrl = `https://api.github.com/repos/${USER}/${REPO}/commits?path=${encodeURIComponent(item.path)}&per_page=1&sha=${BRANCH}`;
+          const cr = await fetch(commitsUrl, {headers:{"Accept":"application/vnd.github+json"}});
+          let lastDate = null;
+          if(cr.ok){
+            const cj = await cr.json();
+            if(Array.isArray(cj) && cj[0]?.commit?.author?.date){
+              lastDate = cj[0].commit.author.date;
+            }
           }
+          return {
+            name: item.name,
+            path: item.path,
+            src: rawUrl(item.path),
+            date: lastDate ? new Date(lastDate) : new Date(0) // fallback to epoch if unknown
+          };
+        }));
+
+        const entries = withDates
+          .filter(x => x.status === "fulfilled")
+          .map(x => x.value);
+
+        // Sort newest first by commit date
+        entries.sort((a,b) => b.date - a.date);
+
+        // Render tiles
+        for(const it of entries){
+          const div = document.createElement("div");
+          div.className = "tile";
+          div.innerHTML = `
+            <img src="${it.src}" alt="${it.name}">
+            <div class="meta">Updated: ${fmtDate(it.date)}</div>
+          `;
+          div.onclick = ()=>openModal(it.src, it.name);
+          grid.appendChild(div);
         }
-      }catch(e){}
+
+      }catch(e){
+        // graceful fallback: nothing breaks if API throttles
+        grid.innerHTML = "<small style='color:#5a6a80'>Could not sort by date (API limit). Images will appear when available.</small>";
+      }
     }
 
     // Modal viewer
