@@ -23,13 +23,11 @@
     .wrap{max-width:1024px; margin-inline:auto; padding:40px 20px}
     .hero{background:var(--card); border-radius:var(--radius); padding:40px 28px 32px; box-shadow:var(--shadow); position:relative}
 
-    /* Header */
     .header{display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:center}
     .badgewrap img{display:block; height:120px; filter:drop-shadow(0 12px 24px rgba(15,30,60,.28))}
     h1{margin:0; font-weight:800; font-size:clamp(30px,5.4vw,46px)}
     .role{margin:6px 0 0; color:#173252; font-style:italic; font-weight:700; font-size:clamp(17px,3vw,24px)}
 
-    /* Actions */
     .actions{margin-top:14px; display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between}
     .btn{padding:12px 16px; border-radius:14px; font-weight:600; text-decoration:none; display:flex;
       align-items:center; gap:8px; flex:1 1 200px; justify-content:center; color:#fff; background:var(--accent);
@@ -37,18 +35,15 @@
     .btn.ghost{background:#fff; color:var(--ink); border:1px solid #e9f2ff}
     .btn svg{width:18px; height:18px}
 
-    /* Stats */
     .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-top:18px}
     .stat{background:#ffffffd9; border:1px solid #e7f1fb; border-radius:14px; padding:12px 14px}
     .stat .k{font-size:22px; font-weight:800}
     .stat .l{color:var(--muted); font-size:13px}
 
-    /* About */
     .summary{margin-top:18px; background:#ffffffd9; border:1px solid #e7f1fb; border-radius:14px; padding:16px 18px}
     .summary h2{margin:0 0 8px; font-size:18px}
     .summary p{margin:0 0 10px}
 
-    /* Designs (gallery) */
     .gallery{margin-top:22px; background:#ffffffd9; border:1px solid #e7f1fb; border-radius:14px; padding:16px 18px}
     .gallery h2{margin:0 0 12px}
     .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px}
@@ -67,10 +62,8 @@
 <body>
   <main class="wrap">
     <section class="hero">
-      <!-- Header -->
       <div class="header">
         <div class="badgewrap">
-          <!-- PL-300 badge now links to your certificate -->
           <a
             href="https://learn.microsoft.com/api/credentials/share/en-us/TejasVyasam-8587/A22FE37A860DF2A3?sharingId=53BC4AA26E32FB17"
             target="_blank" rel="noopener"
@@ -85,21 +78,18 @@
         </div>
       </div>
 
-      <!-- Actions -->
       <div class="actions">
         <a class="btn" href="https://github.com/tjas01" target="_blank" rel="noopener">Repository</a>
-        <a class="btn ghost" href="https://docs.google.com/document/d/1yllgDKpD88WgszzXMBIyP7JBR5FXneLldbGwTmUzfyw/preview" target="_blank" rel="noopener">Résumé</a>
+        <a class="btn ghost" href="https://docs.google.com/document/d/1yllgDKpD88WgszzXMBIyP7JBR5FXneLldbGwTmUzfyw/preview" target="_blank" rel="noopener" style="display:none">Résumé</a>
         <a class="btn ghost" href="https://www.linkedin.com/in/tejasvyasam/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
 
-      <!-- Stats -->
       <div class="stats" id="stats">
         <div class="stat"><div class="k" id="years">—</div><div class="l">Years in Data</div></div>
         <div class="stat"><div class="k" id="repos">—</div><div class="l">Repos</div></div>
         <div class="stat"><div class="k" id="commits">—</div><div class="l">Commits</div></div>
       </div>
 
-      <!-- About Me -->
       <div class="summary">
         <h2>About Me</h2>
         <p>
@@ -110,7 +100,6 @@
         </p>
       </div>
 
-      <!-- Designs -->
       <div id="designs" class="gallery">
         <h2>Designs</h2>
         <div class="grid" id="grid"></div>
@@ -120,7 +109,6 @@
     <footer><small>© <span id="y"></span> Tejas Vyasam • Built with GitHub Pages</small></footer>
   </main>
 
-  <!-- Modal -->
   <div id="modal" class="modal" role="dialog" aria-modal="true" aria-label="Image viewer">
     <button class="close" id="closeBtn">Close</button>
     <img id="modalImg" alt="">
@@ -131,7 +119,6 @@
     const REPO = "tjas01.github.io";
     const BRANCH = "main";
 
-    // Helper: image detection + raw url + date fmt
     function isImage(name){ return /\.(png|jpe?g|gif|webp|svg)$/i.test(name); }
     function rawUrl(path){ return `https://raw.githubusercontent.com/${USER}/${REPO}/${BRANCH}/${path}`; }
     function fmtDate(s){
@@ -141,7 +128,6 @@
       }catch{ return ""; }
     }
 
-    // Designs: list files, fetch last-commit date for each image, sort by date desc, render
     async function loadDesigns(){
       const grid = document.getElementById("grid");
       grid.innerHTML = "";
@@ -150,11 +136,7 @@
         const r = await fetch(url, {headers:{"Accept":"application/vnd.github+json"}});
         if(!r.ok) throw new Error("Failed to load repo contents");
         const data = await r.json();
-
-        // Keep only image files in root
         const images = data.filter(item => item.type==="file" && isImage(item.name));
-
-        // For each image, look up its most recent commit date (date added/updated)
         const withDates = await Promise.allSettled(images.map(async (item) => {
           const commitsUrl = `https://api.github.com/repos/${USER}/${REPO}/commits?path=${encodeURIComponent(item.path)}&per_page=1&sha=${BRANCH}`;
           const cr = await fetch(commitsUrl, {headers:{"Accept":"application/vnd.github+json"}});
@@ -169,7 +151,7 @@
             name: item.name,
             path: item.path,
             src: rawUrl(item.path),
-            date: lastDate ? new Date(lastDate) : new Date(0) // fallback to epoch if unknown
+            date: lastDate ? new Date(lastDate) : new Date(0)
           };
         }));
 
@@ -177,10 +159,8 @@
           .filter(x => x.status === "fulfilled")
           .map(x => x.value);
 
-        // Sort newest first by commit date
         entries.sort((a,b) => b.date - a.date);
 
-        // Render tiles
         for(const it of entries){
           const div = document.createElement("div");
           div.className = "tile";
@@ -193,12 +173,10 @@
         }
 
       }catch(e){
-        // graceful fallback: nothing breaks if API throttles
         grid.innerHTML = "<small style='color:#5a6a80'>Could not sort by date (API limit). Images will appear when available.</small>";
       }
     }
 
-    // Modal viewer
     function openModal(src,alt){
       document.getElementById("modalImg").src=src;
       document.getElementById("modalImg").alt=alt;
@@ -207,9 +185,8 @@
     document.getElementById("closeBtn").onclick=()=>document.getElementById("modal").classList.remove("open");
     document.getElementById("modal").onclick=e=>{ if(e.target.id==="modal") document.getElementById("modal").classList.remove("open"); }
 
-    // Years in Data (start: July 2016)
     function loadYears(){
-      const start = new Date(Date.UTC(2016,6,1)); // 2016-07-01
+      const start = new Date(Date.UTC(2016,6,1));
       const now = new Date();
       let years = now.getUTCFullYear()-start.getUTCFullYear();
       const m = now.getUTCMonth()-start.getUTCMonth();
@@ -218,7 +195,6 @@
       document.getElementById("years").textContent = years;
     }
 
-    // Repos (public only via public API; total including private is not exposed without auth)
     async function loadRepos(){
       try{
         const u = await fetch(`https://api.github.com/users/${USER}`, {headers:{"Accept":"application/vnd.github+json"}});
@@ -227,12 +203,16 @@
       }catch(e){}
     }
 
-    // Commits from public activity
     async function loadCommits(){
       try{
         let page=1, commits=0;
-        while(page<=10){ // up to 1000 recent events
-          const r = await fetch(`https://api.github.com/users/${USER}/events/public?per_page=100&page=${page++}`, {headers:{"Accept":"application/vnd.github+json"}});
+        const headers = {"Accept":"application/vnd.github+json"};
+        while(page<=10){
+          const r = await fetch(
+            `https://api.github.com/users/${USER}/events/public?per_page=100&page=${page++}`,
+            { headers }
+          );
+          if(!r.ok) break;
           const batch = await r.json();
           if(!Array.isArray(batch) || batch.length===0) break;
           for(const ev of batch){
@@ -242,11 +222,12 @@
           }
           if(batch.length<100) break;
         }
-        document.getElementById("commits").textContent = commits;
-      }catch(e){}
+        document.getElementById("commits").textContent = commits || "—";
+      }catch(e){
+        document.getElementById("commits").textContent = "—";
+      }
     }
 
-    // Run
     loadDesigns();
     loadYears();
     loadRepos();
