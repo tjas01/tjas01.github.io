@@ -40,28 +40,34 @@
     .stat .k{font-size:22px; font-weight:800; transition:opacity .2s ease}
     .stat .l{color:var(--muted); font-size:13px}
 
-    /* Hover-reveal cards (experience, repos, tools) */
+    /* Hover-reveal cards */
     .reveal{max-height:74px; overflow:hidden; transition:max-height .28s ease, box-shadow .28s ease, background .28s ease, padding .28s ease}
     .reveal:hover{max-height:260px; box-shadow:0 10px 22px rgba(15,30,60,.18)}
     .reveal:hover .k{opacity:.1}
 
+    /* Lists inside reveal */
     .tools-list,
-    .repos-list,
-    .xp-list{margin:10px 0 0 16px; padding:0; list-style:disc; font-size:14px; color:#2c3e59; line-height:1.45;
+    .repos-box,
+    .xp-list{margin:10px 0 0; padding:0; list-style:none; font-size:14px; color:#2c3e59; line-height:1.45;
       opacity:0; transform:translateY(4px); transition:opacity .25s ease .08s, transform .25s ease .08s}
     .reveal:hover .tools-list,
-    .reveal:hover .repos-list,
+    .reveal:hover .repos-box,
     .reveal:hover .xp-list{opacity:1; transform:translateY(0)}
 
-    .repos-list{list-style:none; margin-left:0}
-    .repos-list li{display:flex; align-items:center; gap:8px; padding:4px 0; border-bottom:1px solid #eef4fb}
-    .repos-list li:last-child{border-bottom:0}
-    .repo-link{color:#0b3d6e; text-decoration:none; font-weight:600}
-    .repo-meta{color:#5a6a80; font-size:12px}
-
-    .xp-list{list-style:none; margin-left:0}
+    /* Experience: compact, recruiter-friendly */
+    .xp-list li{padding:6px 0; border-bottom:1px solid #eef4fb}
+    .xp-list li:last-child{border-bottom:0}
     .xp-role{font-weight:700}
     .xp-meta{color:#5a6a80; font-size:12px}
+
+    /* Repos: scrollable area so it never gets cut */
+    .repos-box{max-height:150px; overflow-y:auto; border-radius:8px}
+    .repos-box::-webkit-scrollbar{width:8px}
+    .repos-box::-webkit-scrollbar-thumb{background:#c9d9ea; border-radius:8px}
+    .repos-item{display:flex; align-items:center; gap:8px; padding:4px 0; border-bottom:1px solid #eef4fb}
+    .repos-item:last-child{border-bottom:0}
+    .repo-link{color:#0b3d6e; text-decoration:none; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+    .repo-meta{color:#5a6a80; font-size:12px; flex-shrink:0}
 
     /* Gallery */
     .summary{margin-top:18px; background:#ffffffd9; border:1px solid #e7f1fb; border-radius:14px; padding:16px 18px}
@@ -81,7 +87,10 @@
     .modal .close{position:absolute; top:18px; right:22px; background:#fff; border:0; padding:10px 12px; border-radius:10px; font-weight:700; cursor:pointer}
 
     footer{margin:26px 0 6px; color:#5e6f86; text-align:center}
-    @media (max-width:700px){ .header{grid-template-columns:1fr; text-align:center} .badgewrap img{height:100px} }
+    @media (max-width:700px){
+      .header{grid-template-columns:1fr; text-align:center}
+      .badgewrap img{height:100px}
+    }
   </style>
 </head>
 <body>
@@ -106,31 +115,34 @@
       </div>
 
       <div class="stats" id="stats">
+        <!-- Years in Data (compact experience on hover; company names removed for clarity) -->
         <div class="stat reveal" id="yearsStat">
           <div class="k" id="years">—</div>
           <div class="l">Years in Data</div>
           <ul class="xp-list">
             <li>
-              <div class="xp-role">Data Analytics Lead (Contract) — Vosyn.ai</div>
-              <div class="xp-meta">Canada • Mar 2025 – Aug 2025</div>
+              <div class="xp-role">Data Analytics Lead (Contract)</div>
+              <div class="xp-meta">Mar 2025 – Aug 2025</div>
             </li>
             <li>
-              <div class="xp-role">Data and Supply Chain Analyst — Ya-Nur Trading Company</div>
-              <div class="xp-meta">Brunei Darussalam • 2021 – 2022</div>
+              <div class="xp-role">Data & Supply Chain Analyst</div>
+              <div class="xp-meta">2021 – 2022</div>
             </li>
             <li>
-              <div class="xp-role">Data Analyst, Asset Tracking & IoT — TechnoR Solutions</div>
-              <div class="xp-meta">India & Brunei Darussalam • 2016 – 2021</div>
+              <div class="xp-role">Data Analyst, Asset Tracking & IoT</div>
+              <div class="xp-meta">2016 – 2021</div>
             </li>
           </ul>
         </div>
 
+        <!-- Repos (auto list with scroll) -->
         <div class="stat reveal" id="reposStat">
           <div class="k" id="repos">—</div>
           <div class="l">Repos</div>
-          <ul class="repos-list" id="reposList"></ul>
+          <div class="repos-box" id="reposBox"></div>
         </div>
 
+        <!-- Tools Mastered -->
         <div class="stat reveal" id="toolsStat">
           <div class="k" id="toolsCount">—</div>
           <div class="l">Tools Mastered</div>
@@ -248,31 +260,30 @@
       }catch(e){}
 
       try{
-        const list = document.getElementById("reposList");
-        list.innerHTML = "";
-        let page=1, perPage=100, total=0;
+        const box = document.getElementById("reposBox");
+        box.innerHTML = "";
+        let page=1, perPage=100;
         while(true){
           const r = await fetch(`https://api.github.com/users/${USER}/repos?per_page=${perPage}&page=${page++}&type=owner&sort=updated`,
                                 {headers:{"Accept":"application/vnd.github+json"}});
           if(!r.ok) break;
           const repos = await r.json();
           if(!Array.isArray(repos) || repos.length===0) break;
-          total += repos.length;
 
           repos.forEach(repo=>{
-            const li = document.createElement("li");
-            li.innerHTML = `
-              <a class="repo-link" href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a>
+            const item = document.createElement("div");
+            item.className = "repos-item";
+            item.innerHTML = `
+              <a class="repo-link" href="${repo.html_url}" target="_blank" rel="noopener" title="${repo.full_name}">${repo.name}</a>
               <span class="repo-meta">• Updated ${timeAgo(repo.updated_at)}</span>
             `;
-            list.appendChild(li);
+            box.appendChild(item);
           });
 
           if(repos.length<perPage) break;
         }
       }catch(e){
-        const list = document.getElementById("reposList");
-        list.innerHTML = `<li><span class="repo-meta">Could not load repositories right now.</span></li>`;
+        document.getElementById("reposBox").innerHTML = `<div class="repo-meta">Could not load repositories right now.</div>`;
       }
     }
 
