@@ -1,208 +1,233 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tejas Vyasam — Data Analyst</title>
-  <meta name="description" content="Tejas Vyasam — Data Analyst (PL-300). Power BI, automation, governance, applied ML." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg-start:#eaf5ff; --bg-mid:#8BBEE6; --bg-end:#5B85AA;
-      --card:#A1C8E8; --ink:#102035; --muted:#4e6079; --accent:#1f6fb2;
-      --radius:28px; --shadow:0 28px 72px rgba(20,40,70,.24), 0 6px 18px rgba(20,40,70,.14);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; color:var(--ink);
-      font:16px/1.6 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:linear-gradient(180deg,var(--bg-start) 0%,var(--bg-mid) 38%,var(--bg-end) 100%);
-    }
-    .wrap{max-width:1024px; margin-inline:auto; padding:40px 20px}
-    .hero{background:var(--card); border-radius:var(--radius); padding:40px 28px 32px; box-shadow:var(--shadow); position:relative}
-
-    .header{display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:center}
-    .badgewrap img{display:block; height:120px; filter:drop-shadow(0 12px 24px rgba(15,30,60,.28))}
-    h1{margin:0; font-weight:800; font-size:clamp(30px,5.4vw,46px)}
-    .role{margin:6px 0 0; color:#173252; font-style:italic; font-weight:700; font-size:clamp(17px,3vw,24px)}
-
-    .actions{margin-top:14px; display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between}
-    .btn{padding:12px 16px; border-radius:14px; font-weight:600; text-decoration:none; display:flex;
-      align-items:center; gap:8px; flex:1 1 200px; justify-content:center; color:#fff; background:var(--accent);
-      box-shadow:0 4px 10px rgba(15,30,60,.15)}
-    .btn.ghost{background:#fff; color:var(--ink); border:1px solid #e9f2ff}
-
-    .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-top:18px}
-    .stat{background:#ffffffd9; border:1px solid #e7f1fb; border-radius:14px; padding:12px 14px}
-    .stat .k{font-size:22px; font-weight:800; transition:opacity .2s ease}
-    .stat .l{color:var(--muted); font-size:13px}
-
-    .reveal{max-height:74px; overflow:hidden; transition:max-height .28s ease, box-shadow .28s ease, background .28s ease, padding .28s ease}
-    .reveal:hover{max-height:260px; box-shadow:0 10px 22px rgba(15,30,60,.18)}
-    .reveal:hover .k{opacity:.1}
-
-    .tools-list, .repos-box, .xp-list{margin:10px 0 0; padding:0; list-style:none; font-size:14px; color:#2c3e59; line-height:1.45;
-      opacity:0; transform:translateY(4px); transition:opacity .25s ease .08s, transform .25s ease .08s}
-    .reveal:hover .tools-list, .reveal:hover .repos-box, .reveal:hover .xp-list{opacity:1; transform:translateY(0)}
-
-    .xp-list li{padding:6px 0; border-bottom:1px solid #eef4fb}
-    .xp-list li:last-child{border-bottom:0}
-    .xp-role{font-weight:700}
-    .xp-meta{color:#5a6a80; font-size:12px}
-
-    .repos-box{max-height:150px; overflow-y:auto; border-radius:8px}
-    .repos-box::-webkit-scrollbar{width:8px}
-    .repos-box::-webkit-scrollbar-thumb{background:#c9d9ea; border-radius:8px}
-    .repos-item{display:flex; align-items:center; gap:8px; padding:4px 0; border-bottom:1px solid #eef4fb}
-    .repos-item:last-child{border-bottom:0}
-    .repo-link{color:#0b3d6e; text-decoration:none; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
-    .repo-meta{color:#5a6a80; font-size:12px; flex-shrink:0}
-
-    .summary{margin-top:18px; background:#ffffffd9; border:1px solid #e7f1fb; border-radius:14px; padding:16px 18px}
-    .summary h2{margin:0 0 8px; font-size:18px}
-    .summary p{margin:0 0 10px}
-
-    .gallery{margin-top:22px; background:#ffffffd9; border:1px solid #e7f1fb; border-radius:14px; padding:16px 18px}
-    .gallery h2{margin:0 0 12px}
-    .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px}
-    .tile{border-radius:12px; overflow:hidden; border:1px solid #e7f1fb; background:#fff; box-shadow:0 4px 12px rgba(15,30,60,.1); cursor:pointer}
-    .tile img{width:100%; height:180px; object-fit:cover}
-    .meta{padding:8px 10px; font-size:12px; color:#5a6a80; border-top:1px solid #eef4fb}
-
-    .modal{position:fixed; inset:0; background:rgba(10,20,40,.75); display:none; align-items:center; justify-content:center; z-index:100}
-    .modal.open{display:flex}
-    .modal img{max-width:92vw; max-height:86vh; border-radius:12px}
-    .modal .close{position:absolute; top:18px; right:22px; background:#fff; border:0; padding:10px 12px; border-radius:10px; font-weight:700; cursor:pointer}
-
-    footer{margin:26px 0 6px; color:#5e6f86; text-align:center}
-    @media (max-width:700px){
-      .header{grid-template-columns:1fr; text-align:center}
-      .badgewrap img{height:100px}
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tejas Vyasam</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#F2F0E8;--card:#FAFAF6;--accent:#4A6A8A;--accent-light:#EAF0F5;
+--ink:#3D3D38;--muted:#7A7A72;--faint:#AEADA6;--border:#E4E2D8;
+--shadow:0 2px 12px rgba(61,61,56,.06);--shadow-hover:0 6px 24px rgba(61,61,56,.1);
+--ff:"DM Sans",system-ui,sans-serif;--fm:"DM Mono",monospace;--radius:14px;--nav-h:54px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:50;background:rgba(242,240,232,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:980px;margin:auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:var(--nav-h)}
+.nav-logo{font-family:var(--fm);font-size:12px;color:var(--muted);letter-spacing:.04em}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+main{max-width:980px;margin:auto;padding:0 32px 80px}
+section{scroll-margin-top:calc(var(--nav-h) + 20px);margin-bottom:72px}
+.hero{padding:72px 0 60px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:start}
+.hero-eyebrow{font-family:var(--fm);font-size:11px;color:var(--accent);letter-spacing:.1em;margin-bottom:14px}
+h1{font-size:clamp(34px,5.5vw,52px);font-weight:300;line-height:1.1;letter-spacing:-.02em;color:var(--ink)}
+h1 strong{font-weight:500}
+.hero-role{font-size:15px;color:var(--muted);margin-top:10px;font-weight:300;font-style:italic}
+.pl-badge{margin-top:16px;display:inline-block}
+.pl-badge img{width:72px;opacity:.88;display:block;transition:opacity .2s}
+.pl-badge img:hover{opacity:1}
+.hero-desc{max-width:500px;color:var(--muted);margin-top:18px;font-size:14px;line-height:1.85}
+.hero-actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+.btn-primary{padding:9px 20px;background:var(--accent);color:#fff;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-ghost{padding:9px 20px;background:transparent;color:var(--ink);border:1px solid var(--border);border-radius:8px;font-size:13px;text-decoration:none;transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.li-col{padding-top:8px}
+.li-col .badge-base__link{display:none}
+.rule{height:1px;background:var(--border);margin:0 0 64px}
+.section-label{font-family:var(--fm);font-size:10.5px;letter-spacing:.1em;color:var(--faint);margin-bottom:20px;text-transform:uppercase}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);transition:box-shadow .25s,transform .25s}
+.stat-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
+.stat-num{font-size:26px;font-weight:300;color:var(--ink);letter-spacing:-.02em;font-family:var(--fm)}
+.stat-label{font-size:12px;color:var(--faint);margin-top:5px}
+.xp-list{display:flex;flex-direction:column;gap:6px}
+.xp-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 22px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;box-shadow:var(--shadow);transition:box-shadow .25s,transform .25s}
+.xp-item:hover{box-shadow:var(--shadow-hover);transform:translateY(-1px)}
+.xp-role{font-size:14px;font-weight:500;color:var(--ink)}
+.xp-company{font-size:12px;color:var(--faint);margin-top:3px}
+.xp-date{font-family:var(--fm);font-size:11px;color:var(--faint);white-space:nowrap;text-align:right}
+.tools-wrap{display:flex;flex-wrap:wrap;gap:7px}
+.tool-tag{font-family:var(--fm);font-size:11px;padding:5px 12px;background:var(--card);border:1px solid var(--border);border-radius:20px;color:var(--muted);transition:border-color .2s,color .2s,background .2s;cursor:default}
+.tool-tag:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.cert-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);transition:box-shadow .25s,border-color .25s}
+.cert-item:hover{box-shadow:var(--shadow-hover);border-color:var(--accent)}
+.cert-name{font-size:13px;font-weight:500;color:var(--ink)}
+.cert-meta{font-size:11px;color:var(--faint);margin-top:4px;font-family:var(--fm)}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.gallery-tile{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--card);cursor:pointer;box-shadow:var(--shadow);transition:box-shadow .25s,transform .25s}
+.gallery-tile:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
+.gallery-tile img{width:100%;height:160px;object-fit:cover;display:block;transition:opacity .2s}
+.gallery-tile:hover img{opacity:.9}
+.modal-overlay{position:fixed;inset:0;background:rgba(30,28,24,.78);display:none;align-items:center;justify-content:center;z-index:200;backdrop-filter:blur(6px)}
+.modal-overlay.open{display:flex}
+.modal-img{max-width:90vw;max-height:86vh;border-radius:12px;display:block}
+.modal-close{position:absolute;top:20px;right:24px;background:var(--card);border:1px solid var(--border);padding:7px 14px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;color:var(--ink)}
+footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:11px;color:var(--faint);font-family:var(--fm)}
+@media(max-width:640px){
+.hero{grid-template-columns:1fr}.li-col{display:none}
+main{padding:0 20px 60px}.nav-inner{padding:0 20px}
+}
+</style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="hero">
-      <div class="header">
-        <div class="badgewrap">
-          <a href="https://learn.microsoft.com/api/credentials/share/en-us/TejasVyasam-8587/A22FE37A860DF2A3?sharingId=53BC4AA26E32FB17" target="_blank" rel="noopener">
-            <img src="https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg?branch=main" alt="Microsoft Certified: Power BI Data Analyst Associate">
-          </a>
-        </div>
-        <div>
-          <h1>Tejas Vyasam</h1>
-          <div class="role"><em>Data Analyst</em></div>
-        </div>
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">Portfolio</span>
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#tools">Tools</a>
+      <a href="#designs">Designs</a>
+    </div>
+  </div>
+</nav>
+<main>
+  <div class="hero">
+    <div>
+      <div class="hero-eyebrow">Data Analyst · PL-300 Certified</div>
+      <h1><strong>Tejas</strong> Vyasam</h1>
+      <p class="hero-role">BI · Data Engineering · AI &amp; Machine Learning</p>
+      <a class="pl-badge" href="https://learn.microsoft.com/api/credentials/share/en-us/TejasVyasam-8587/A22FE37A860DF2A3?sharingId=53BC4AA26E32FB17" target="_blank" rel="noopener">
+        <img src="https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg?branch=main" alt="Microsoft PL-300">
+      </a>
+      <p class="hero-desc">I build end-to-end data solutions, from executive-grade Power BI dashboards and SQL pipelines to AI agent workflows and machine learning models. My focus is turning operational complexity into reliable, decision-ready intelligence across the full data stack.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="https://github.com/tjas01" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn-ghost" href="https://www.linkedin.com/in/tejasvyasam/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-
-      <div class="actions">
-        <a class="btn" href="https://github.com/tjas01" target="_blank" rel="noopener">Repository</a>
-        <a class="btn ghost" href="https://docs.google.com/document/d/1yllgDKpD88WgszzXMBIyP7JBR5FXneLldbGwTmUzfyw/preview" target="_blank" rel="noopener" style="display:none">Résumé</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/tejasvyasam/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-
-      <div class="stats" id="stats">
-        <div class="stat reveal" id="yearsStat">
-          <div class="k" id="years">—</div>
-          <div class="l">Years in Data</div>
-          <ul class="xp-list">
-            <li><div class="xp-role">Data Analytics Lead (Contract)</div><div class="xp-meta">Mar 2025 – Aug 2025</div></li>
-            <li><div class="xp-role">Data & Supply Chain Analyst</div><div class="xp-meta">2021 – 2022</div></li>
-            <li><div class="xp-role">Data Analyst, Asset Tracking & IoT</div><div class="xp-meta">2016 – 2021</div></li>
-          </ul>
-        </div>
-
-        <div class="stat reveal" id="reposStat">
-          <div class="k" id="repos">—</div>
-          <div class="l">Repos</div>
-          <div class="repos-box" id="reposBox"></div>
-        </div>
-
-        <div class="stat reveal" id="toolsStat">
-          <div class="k" id="toolsCount">—</div>
-          <div class="l">Tools Mastered</div>
-          <ul class="tools-list" id="toolsList">
-            <li>Power BI</li>
-            <li>MySQL</li>
-            <li>PostgreSQL</li>
-            <li>MSSQL</li>
-            <li>n8n</li>
-            <li>VS Code</li>
-            <li>Tableau</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="summary">
-        <h2>About Me</h2>
-        <p>I partner with teams to turn raw information into reliable, decision-ready insights. My focus is executive-grade Power BI dashboards, practical automation, and the lightweight governance that keeps KPIs trustworthy. I am <strong>Microsoft PL-300 certified</strong> and comfortable translating analytics for senior audiences.</p>
-        <p>I design clear stories from data, automate repeatable workflows with Python, n8n, Make, and Microsoft Fabric, and maintain accuracy through data dictionaries, ownership models, and refresh cadence. My toolkit spans SQL, Excel, and BigQuery, with applied machine learning across regression, clustering, recommender systems, gradient boosting, and neural networks.</p>
-      </div>
-
-      <div id="designs" class="gallery">
-        <h2>Designs</h2>
-        <div class="grid" id="grid"></div>
-      </div>
-    </section>
-
-    <footer><small>© <span id="y"></span> Tejas Vyasam • Built with GitHub Pages</small></footer>
-  </main>
-
-  <div id="modal" class="modal" role="dialog" aria-modal="true">
-    <button class="close" id="closeBtn">Close</button>
-    <img id="modalImg" alt="">
+    </div>
+    <div class="li-col">
+      <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+      <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="HORIZONTAL" data-vanity="tejasvyasam" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://ca.linkedin.com/in/tejasvyasam?trk=profile-badge" style="display:none">Tejas Vyasam</a></div>
+    </div>
   </div>
 
-  <script>
-    const USER = "tjas01";
-    const REPO = "tjas01.github.io";
-    const BRANCH = "main";
+  <div class="rule"></div>
 
-    function isImage(name){return /\.(png|jpe?g|gif|webp|svg)$/i.test(name);}
-    function rawUrl(path){return `https://raw.githubusercontent.com/${USER}/${REPO}/${BRANCH}/${path}`;}
-    function fmtDate(s){try{const d=new Date(s);return d.toLocaleDateString(undefined,{year:"numeric",month:"short",day:"2-digit"});}catch{return ""}}
-    function timeAgo(iso){const d=new Date(iso).getTime();const now=Date.now();const days=Math.max(0,Math.floor((now-d)/86400000));if(days===0)return"today";if(days===1)return"1d ago";if(days<30)return days+"d ago";const months=Math.floor(days/30);return months+"mo ago";}
+  <section>
+    <div class="section-label">Overview</div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num" id="yrs">—</div><div class="stat-label">Years in data</div></div>
+      <div class="stat-card"><div class="stat-num" id="repos">—</div><div class="stat-label">Public repositories</div></div>
+      <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Countries worked in</div></div>
+      <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">Certifications</div></div>
+    </div>
+  </section>
 
-    async function loadDesigns(){
-      const grid=document.getElementById("grid");grid.innerHTML="";
-      try{
-        const url=`https://api.github.com/repos/${USER}/${REPO}/contents?ref=${BRANCH}`;
-        const r=await fetch(url,{headers:{"Accept":"application/vnd.github+json"}});
-        if(!r.ok)throw new Error();const data=await r.json();
-        const images=data.filter(item=>item.type==="file"&&isImage(item.name));
-        const withDates=await Promise.allSettled(images.map(async item=>{
-          const commitsUrl=`https://api.github.com/repos/${USER}/${REPO}/commits?path=${encodeURIComponent(item.path)}&per_page=1&sha=${BRANCH}`;
-          const cr=await fetch(commitsUrl,{headers:{"Accept":"application/vnd.github+json"}});
-          let lastDate=null;if(cr.ok){const cj=await cr.json();if(Array.isArray(cj)&&cj[0]?.commit?.author?.date){lastDate=cj[0].commit.author.date;}}
-          return{name:item.name,path:item.path,src:rawUrl(item.path),date:lastDate?new Date(lastDate):new Date(0)};
-        }));
-        const entries=withDates.filter(x=>x.status==="fulfilled").map(x=>x.value).sort((a,b)=>b.date-a.date);
-        for(const it of entries){const div=document.createElement("div");div.className="tile";div.innerHTML=`<img src="${it.src}" alt="${it.name}"><div class="meta">Updated: ${fmtDate(it.date)}</div>`;div.onclick=()=>openModal(it.src,it.name);grid.appendChild(div);}
-      }catch(e){grid.innerHTML="<small style='color:#5a6a80'>Could not sort by date (API limit). Images will appear when available.</small>";}
-    }
+  <section id="experience">
+    <div class="section-label">Experience</div>
+    <div class="xp-list">
+      <div class="xp-item">
+        <div><div class="xp-role">Data Annotation Specialist (AI/ML)</div><div class="xp-company">TELUS International · Vancouver, BC</div></div>
+        <div class="xp-date">Oct 2025 – Present</div>
+      </div>
+      <div class="xp-item">
+        <div><div class="xp-role">Senior Operations Team Lead</div><div class="xp-company">Vosyn.ai · Etobicoke, ON</div></div>
+        <div class="xp-date">Mar 2025 – Sep 2025</div>
+      </div>
+      <div class="xp-item">
+        <div><div class="xp-role">Data Analyst</div><div class="xp-company">Vosyn.ai · Etobicoke, ON</div></div>
+        <div class="xp-date">Feb 2025 – Mar 2025</div>
+      </div>
+      <div class="xp-item">
+        <div><div class="xp-role">Inventory Auditor</div><div class="xp-company">WIS International · Vancouver, BC</div></div>
+        <div class="xp-date">Nov 2023 – Jan 2025</div>
+      </div>
+      <div class="xp-item">
+        <div><div class="xp-role">Supply Chain Analyst</div><div class="xp-company">Ya-Nur Trading Company · Brunei Darussalam</div></div>
+        <div class="xp-date">2021 – 2022</div>
+      </div>
+      <div class="xp-item">
+        <div><div class="xp-role">Operations Analyst</div><div class="xp-company">TechnoR Solutions · India</div></div>
+        <div class="xp-date">2016 – 2021</div>
+      </div>
+    </div>
+  </section>
 
-    function openModal(src,alt){document.getElementById("modalImg").src=src;document.getElementById("modalImg").alt=alt;document.getElementById("modal").classList.add("open");}
-    document.getElementById("closeBtn").onclick=()=>document.getElementById("modal").classList.remove("open");
-    document.getElementById("modal").onclick=e=>{if(e.target.id==="modal")document.getElementById("modal").classList.remove("open");}
+  <section id="tools">
+    <div class="section-label">Tools &amp; Platforms</div>
+    <div class="tools-wrap" id="toolsWrap"></div>
+  </section>
 
-    function loadYears(){const start=new Date(Date.UTC(2016,6,1));const now=new Date();let years=now.getUTCFullYear()-start.getUTCFullYear();const m=now.getUTCMonth()-start.getUTCMonth();const d=now.getUTCDate()-start.getUTCDate();if(m<0||(m===0&&d<0))years-=1;document.getElementById("years").textContent=years;}
+  <section>
+    <div class="section-label">Certifications</div>
+    <div class="cert-grid">
+      <div class="cert-item"><div class="cert-name">Power BI Data Analyst Associate</div><div class="cert-meta">Microsoft PL-300 · 2025</div></div>
+      <div class="cert-item"><div class="cert-name">Azure Data Fundamentals</div><div class="cert-meta">Microsoft DP-900 · 2025</div></div>
+      <div class="cert-item"><div class="cert-name">Advanced Data Analytics</div><div class="cert-meta">Google · 2025</div></div>
+      <div class="cert-item"><div class="cert-name">BigQuery</div><div class="cert-meta">Google · 2025</div></div>
+    </div>
+  </section>
 
-    async function loadRepos(){
-      try{const u=await fetch(`https://api.github.com/users/${USER}`,{headers:{"Accept":"application/vnd.github+json"}});const j=await u.json();document.getElementById("repos").textContent=j.public_repos??0;}catch(e){}
-      try{const box=document.getElementById("reposBox");box.innerHTML="";let page=1,perPage=100;const allRepos=[];while(true){const r=await fetch(`https://api.github.com/users/${USER}/repos?per_page=${perPage}&page=${page++}&type=owner`,{headers:{"Accept":"application/vnd.github+json"}});if(!r.ok)break;const repos=await r.json();if(!Array.isArray(repos)||repos.length===0)break;allRepos.push(...repos);if(repos.length<perPage)break;}allRepos.sort((a,b)=>a.name.localeCompare(b.name));allRepos.forEach(repo=>{const item=document.createElement("div");item.className="repos-item";item.innerHTML=`<a class="repo-link" href="${repo.html_url}" target="_blank" rel="noopener" title="${repo.full_name}">${repo.name}</a><span class="repo-meta">• Updated ${timeAgo(repo.updated_at)}</span>`;box.appendChild(item);});}catch(e){document.getElementById("reposBox").innerHTML=`<div class="repo-meta">Could not load repositories right now.</div>`;}}
-    
-    function initTools(){
-      const list=document.querySelector("#toolsList");
-      const items=Array.from(list.querySelectorAll("li")).map(li=>li.textContent.trim()).sort((a,b)=>a.localeCompare(b));
-      list.innerHTML="";
-      items.forEach(txt=>{const li=document.createElement("li");li.textContent=txt;list.appendChild(li);});
-      document.getElementById("toolsCount").textContent=items.length;
-    }
+  <section id="designs">
+    <div class="section-label">Designs</div>
+    <div class="gallery-grid" id="gallery"></div>
+  </section>
+</main>
 
-    loadDesigns();loadYears();loadRepos();initTools();document.getElementById("y").textContent=new Date().getFullYear();
-  </script>
+<footer>© <span id="yr"></span> Tejas Vyasam · Built with GitHub Pages</footer>
+
+<div class="modal-overlay" id="modal">
+  <button class="modal-close" id="modalClose">Close</button>
+  <img class="modal-img" id="modalImg" alt="">
+</div>
+
+<script>
+const USER="tjas01",REPO="tjas01.github.io",BRANCH="main";
+const tools=["Power BI","DAX","Power Query","SQL","PostgreSQL","MySQL","T-SQL","Python","Pandas","NumPy","Scikit-learn","XGBoost","Tableau","n8n","Power Automate","Azure","Microsoft Fabric","BigQuery","Databricks","Snowflake","SAP S/4HANA","Docker","Git","REST APIs","Google Apps Script","Excel","Visio","Notion"];
+const wrap=document.getElementById("toolsWrap");
+tools.sort((a,b)=>a.localeCompare(b)).forEach(t=>{const s=document.createElement("span");s.className="tool-tag";s.textContent=t;wrap.appendChild(s);});
+document.getElementById("yr").textContent=new Date().getFullYear();
+function calcYears(){
+  const s=new Date(Date.UTC(2016,6,1)),n=new Date();
+  let y=n.getUTCFullYear()-s.getUTCFullYear();
+  if(n.getUTCMonth()<s.getUTCMonth()||(n.getUTCMonth()===s.getUTCMonth()&&n.getUTCDate()<s.getUTCDate()))y--;
+  document.getElementById("yrs").textContent=y;
+}
+calcYears();
+async function loadRepos(){
+  try{
+    const r=await fetch(`https://api.github.com/users/${USER}`,{headers:{Accept:"application/vnd.github+json"}});
+    const j=await r.json();
+    document.getElementById("repos").textContent=j.public_repos??0;
+  }catch(e){}
+}
+loadRepos();
+function isImg(n){return/\.(png|jpe?g|gif|webp|svg)$/i.test(n);}
+function raw(p){return`https://raw.githubusercontent.com/${USER}/${REPO}/${BRANCH}/${p}`;}
+async function loadGallery(){
+  const g=document.getElementById("gallery");
+  try{
+    const r=await fetch(`https://api.github.com/repos/${USER}/${REPO}/contents?ref=${BRANCH}`,{headers:{Accept:"application/vnd.github+json"}});
+    if(!r.ok)throw new Error();
+    const data=await r.json();
+    const imgs=data.filter(f=>f.type==="file"&&isImg(f.name));
+    const withDates=await Promise.allSettled(imgs.map(async f=>{
+      const cr=await fetch(`https://api.github.com/repos/${USER}/${REPO}/commits?path=${encodeURIComponent(f.path)}&per_page=1&sha=${BRANCH}`,{headers:{Accept:"application/vnd.github+json"}});
+      let d=null;
+      if(cr.ok){const cj=await cr.json();if(cj[0]?.commit?.author?.date)d=cj[0].commit.author.date;}
+      return{name:f.name,src:raw(f.path),date:d?new Date(d):new Date(0)};
+    }));
+    const entries=withDates.filter(x=>x.status==="fulfilled").map(x=>x.value).sort((a,b)=>b.date-a.date);
+    if(!entries.length){g.innerHTML='<p style="font-size:13px;color:var(--faint);padding:8px 0">No images found in repository root.</p>';return;}
+    entries.forEach(it=>{
+      const div=document.createElement("div");div.className="gallery-tile";
+      div.innerHTML=`<img src="${it.src}" alt="${it.name}" loading="lazy">`;
+      div.onclick=()=>{document.getElementById("modalImg").src=it.src;document.getElementById("modal").classList.add("open");};
+      g.appendChild(div);
+    });
+  }catch(e){g.innerHTML='<p style="font-size:13px;color:var(--faint);padding:8px 0">Gallery unavailable.</p>';}
+}
+loadGallery();
+document.getElementById("modalClose").onclick=()=>document.getElementById("modal").classList.remove("open");
+document.getElementById("modal").onclick=e=>{if(e.target.id==="modal")document.getElementById("modal").classList.remove("open");};
+</script>
 </body>
 </html>
