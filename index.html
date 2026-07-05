@@ -3,104 +3,208 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tejas Vyasam</title>
+<meta name="theme-color" content="#0A0C10">
+<meta name="description" content="Tejas Vyasam, MBA — Business Intelligence Analyst with 8+ years across BI, data engineering, and supply chain analytics. PL-300 certified. Open Work Permit valid to 2029.">
+<meta property="og:title" content="Tejas Vyasam, MBA — Business Intelligence Analyst">
+<meta property="og:description" content="Business Intelligence Analyst with 8+ years across Canada, Brunei, and India. Power BI dashboards, SQL pipelines, and machine learning projects. Open Work Permit valid to 2029.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<title>Tejas Vyasam, MBA — Business Intelligence Analyst</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0C10'/%3E%3Crect x='7' y='17' width='4' height='9' rx='1' fill='%234C8DFF'/%3E%3Crect x='14' y='11' width='4' height='15' rx='1' fill='%234C8DFF'/%3E%3Crect x='21' y='6' width='4' height='20' rx='1' fill='%23F2B84B'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
---bg:#F2F0E8;--card:#FAFAF6;--accent:#4A6A8A;--accent-light:#EAF0F5;
---ink:#3D3D38;--muted:#7A7A72;--faint:#AEADA6;--border:#E4E2D8;
---shadow:0 2px 12px rgba(61,61,56,.06);--shadow-hover:0 6px 24px rgba(61,61,56,.1);
---ff:"DM Sans",system-ui,sans-serif;--fm:"DM Mono",monospace;--radius:14px;--nav-h:54px;
+  --bg:#0A0C10;--bg-2:#0D1016;--card:#12151C;--card-hover:#161A24;
+  --accent:#4C8DFF;--on-accent:#061019;--accent-2:#F2B84B;
+  --accent-soft:rgba(76,141,255,.14);--accent2-soft:rgba(242,184,75,.12);
+  --text:#EDEFF3;--muted:#9BA3B2;--faint:#5B6270;--border:#232733;
+  --shadow:0 10px 32px rgba(0,0,0,.5);--shadow-hover:0 16px 44px rgba(0,0,0,.6);
+  --ff:"DM Sans",system-ui,sans-serif;--fm:"DM Mono",monospace;--radius:16px;--nav-h:60px;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--ff);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
-nav{position:sticky;top:0;z-index:50;background:rgba(242,240,232,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:980px;margin:auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:var(--nav-h)}
-.nav-logo{font-family:var(--fm);font-size:12px;color:var(--muted);letter-spacing:.04em}
-.nav-links{display:flex;gap:28px}
-.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s}
-.nav-links a:hover{color:var(--ink)}
-main{max-width:980px;margin:auto;padding:0 32px 80px}
-section{scroll-margin-top:calc(var(--nav-h) + 20px);margin-bottom:72px}
-.hero{padding:72px 0 60px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:start}
-.hero-eyebrow{font-family:var(--fm);font-size:11px;color:var(--accent);letter-spacing:.1em;margin-bottom:14px}
-h1{font-size:clamp(34px,5.5vw,52px);font-weight:300;line-height:1.1;letter-spacing:-.02em;color:var(--ink)}
-h1 strong{font-weight:500}
-.hero-role{font-size:15px;color:var(--muted);margin-top:10px;font-weight:300;font-style:italic}
-.pl-badge{margin-top:16px;display:inline-block}
-.pl-badge img{width:72px;opacity:.88;display:block;transition:opacity .2s}
-.pl-badge img:hover{opacity:1}
-.hero-desc{max-width:500px;color:var(--muted);margin-top:18px;font-size:14px;line-height:1.85}
-.hero-actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
-.btn-primary{padding:9px 20px;background:var(--accent);color:#fff;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:opacity .2s}
-.btn-primary:hover{opacity:.85}
-.btn-ghost{padding:9px 20px;background:transparent;color:var(--ink);border:1px solid var(--border);border-radius:8px;font-size:13px;text-decoration:none;transition:border-color .2s,color .2s}
-.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
-.li-col{padding-top:8px}
+body{font-family:var(--ff);background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--accent-soft);color:var(--text)}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:8px}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(10,12,16,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1040px;margin:auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:var(--nav-h)}
+.nav-logo{font-family:var(--fm);font-size:12px;color:var(--muted);letter-spacing:.05em;display:flex;align-items:center;gap:8px}
+.nav-logo .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.nav-links{display:flex;gap:8px}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s,background .2s;padding:9px 14px;border-radius:8px;position:relative;display:flex;align-items:center;min-height:44px}
+.nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(255,255,255,.05)}
+
+main{max-width:1040px;margin:auto;padding:0 32px 96px;position:relative}
+section{scroll-margin-top:calc(var(--nav-h) + 24px);margin-bottom:88px}
+
+/* Hero */
+.hero{position:relative;padding:88px 0 64px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:start;isolation:isolate}
+.hero-glow{position:absolute;inset:-40px -10% auto -10%;height:520px;z-index:-1;pointer-events:none;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;will-change:transform}
+.blob-1{width:420px;height:420px;background:radial-gradient(circle,var(--accent-soft),transparent 70%);top:-120px;left:0;animation:drift1 22s ease-in-out infinite}
+.blob-2{width:360px;height:360px;background:radial-gradient(circle,var(--accent2-soft),transparent 70%);top:-60px;right:0;animation:drift2 26s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,30px) scale(1.08)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,20px) scale(1.05)}}
+.hero-eyebrow{font-family:var(--fm);font-size:11px;color:var(--accent);letter-spacing:.12em;margin-bottom:16px;text-transform:uppercase;opacity:0;animation:fadeUp .6s .05s ease forwards}
+h1{font-size:clamp(36px,5.8vw,56px);font-weight:300;line-height:1.08;letter-spacing:-.02em;color:var(--text);opacity:0;animation:fadeUp .6s .12s ease forwards}
+h1 strong{font-weight:600}
+.hero-role{font-size:15px;color:var(--muted);margin-top:12px;font-weight:400;min-height:22px;opacity:0;animation:fadeUp .6s .2s ease forwards}
+.role-cycle{color:var(--accent-2);font-family:var(--fm);font-size:13px}
+.pl-badge{margin-top:18px;display:inline-block;background:#fff;border-radius:10px;padding:6px 10px;opacity:0;animation:fadeUp .6s .28s ease forwards}
+.pl-badge img{width:72px;display:block}
+.hero-desc{max-width:520px;color:var(--muted);margin-top:20px;font-size:14.5px;line-height:1.85;opacity:0;animation:fadeUp .6s .36s ease forwards}
+.hero-actions{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap;opacity:0;animation:fadeUp .6s .44s ease forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.btn-primary{padding:11px 22px;background:var(--accent);color:var(--on-accent);border-radius:10px;font-size:13.5px;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s;display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 22px var(--accent-soft)}
+.btn-ghost{padding:11px 22px;background:transparent;color:var(--text);border:1px solid var(--border);border-radius:10px;font-size:13.5px;font-weight:500;text-decoration:none;transition:border-color .2s,color .2s,transform .2s;display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.btn-primary svg,.btn-ghost svg{width:15px;height:15px}
+.li-col{padding-top:8px;background:#fff;border-radius:var(--radius);padding:14px;box-shadow:var(--shadow)}
 .li-col .badge-base__link{display:none}
-.rule{height:1px;background:var(--border);margin:0 0 64px}
-.section-label{font-family:var(--fm);font-size:10.5px;letter-spacing:.1em;color:var(--faint);margin-bottom:20px;text-transform:uppercase}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
-.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);transition:box-shadow .25s,transform .25s}
-.stat-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
-.stat-num{font-size:26px;font-weight:300;color:var(--ink);letter-spacing:-.02em;font-family:var(--fm)}
-.stat-label{font-size:12px;color:var(--faint);margin-top:5px}
-.xp-list{display:flex;flex-direction:column;gap:6px}
-.xp-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 22px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;box-shadow:var(--shadow);transition:box-shadow .25s,transform .25s}
-.xp-item:hover{box-shadow:var(--shadow-hover);transform:translateY(-1px)}
-.xp-role{font-size:14px;font-weight:500;color:var(--ink)}
-.xp-company{font-size:12px;color:var(--faint);margin-top:3px}
-.xp-date{font-family:var(--fm);font-size:11px;color:var(--faint);white-space:nowrap;text-align:right}
-.tools-wrap{display:flex;flex-wrap:wrap;gap:7px}
-.tool-tag{font-family:var(--fm);font-size:11px;padding:5px 12px;background:var(--card);border:1px solid var(--border);border-radius:20px;color:var(--muted);transition:border-color .2s,color .2s,background .2s;cursor:default}
-.tool-tag:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
-.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
-.cert-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);transition:box-shadow .25s,border-color .25s}
-.cert-item:hover{box-shadow:var(--shadow-hover);border-color:var(--accent)}
-.cert-name{font-size:13px;font-weight:500;color:var(--ink)}
-.cert-meta{font-size:11px;color:var(--faint);margin-top:4px;font-family:var(--fm)}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
-.gallery-tile{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--card);cursor:pointer;box-shadow:var(--shadow);transition:box-shadow .25s,transform .25s}
-.gallery-tile:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
-.gallery-tile img{width:100%;height:160px;object-fit:cover;display:block;transition:opacity .2s}
-.gallery-tile:hover img{opacity:.9}
-.modal-overlay{position:fixed;inset:0;background:rgba(30,28,24,.78);display:none;align-items:center;justify-content:center;z-index:200;backdrop-filter:blur(6px)}
+
+.rule{height:1px;background:var(--border);margin:0 0 72px}
+.section-label{font-family:var(--fm);font-size:10.5px;letter-spacing:.12em;color:var(--faint);margin-bottom:22px;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.section-label::after{content:"";flex:1;height:1px;background:var(--border)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1)}
+.reveal.revealed{opacity:1;transform:translateY(0)}
+
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow);transition:box-shadow .3s,transform .3s,border-color .3s}
+.stat-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-3px);border-color:rgba(76,141,255,.35)}
+.stat-num{font-size:28px;font-weight:400;color:var(--text);letter-spacing:-.02em;font-family:var(--fm)}
+.stat-label{font-size:12px;color:var(--faint);margin-top:6px}
+
+/* Repos */
+.repo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.repo-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow);text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:12px;transition:box-shadow .3s,transform .3s,border-color .3s}
+.repo-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px);border-color:rgba(76,141,255,.4);background:var(--card-hover)}
+.repo-top{display:flex;align-items:center;justify-content:space-between;font-family:var(--fm);font-size:11px;color:var(--faint)}
+.repo-lang{display:flex;align-items:center;gap:6px}
+.repo-lang .dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+.repo-stars{color:var(--accent-2)}
+.repo-title{font-size:15.5px;font-weight:600;color:var(--text)}
+.repo-blurb{font-size:13.5px;color:var(--muted);line-height:1.7;flex:1}
+.repo-tags{display:flex;flex-wrap:wrap;gap:6px}
+.repo-tag{font-family:var(--fm);font-size:10.5px;padding:4px 10px;background:var(--accent-soft);color:var(--accent);border-radius:20px}
+.repo-foot{display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:var(--faint);font-family:var(--fm);margin-top:2px}
+.repo-arrow{transition:transform .25s}
+.repo-card:hover .repo-arrow{transform:translateX(4px);color:var(--accent)}
+.repo-more{grid-column:1/-1;text-align:center;margin-top:4px}
+.repo-more a{font-size:13px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;transition:color .2s,border-color .2s}
+.repo-more a:hover{color:var(--accent);border-color:var(--accent)}
+
+/* Experience */
+.xp-list{display:flex;flex-direction:column;gap:0;position:relative;padding-left:24px;border-left:1px solid var(--border)}
+.xp-item{position:relative;padding:0 0 28px 22px}
+.xp-item::before{content:"";position:absolute;left:-29px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.xp-item:last-child{padding-bottom:0}
+.xp-role{font-size:14.5px;font-weight:600;color:var(--text)}
+.xp-company{font-size:12.5px;color:var(--faint);margin-top:4px}
+.xp-date{font-family:var(--fm);font-size:11px;color:var(--muted);margin-top:6px;display:inline-block}
+
+.tools-wrap{display:flex;flex-wrap:wrap;gap:8px}
+.tool-tag{font-family:var(--fm);font-size:11.5px;padding:7px 14px;background:var(--card);border:1px solid var(--border);border-radius:20px;color:var(--muted);transition:border-color .2s,color .2s,background .2s;cursor:default}
+.tool-tag:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+
+.skills-groups{display:flex;flex-direction:column;gap:22px}
+.skill-group-title{font-size:11.5px;font-weight:600;color:var(--muted);margin-bottom:10px;font-family:var(--fm);letter-spacing:.04em;text-transform:uppercase}
+
+/* Hero meta chips */
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;opacity:0;animation:fadeUp .6s .24s ease forwards}
+.meta-chip{font-family:var(--fm);font-size:11.5px;padding:6px 13px;border:1px solid var(--border);border-radius:20px;color:var(--muted);display:inline-flex;align-items:center}
+.meta-chip.work-auth{color:var(--accent-2);border-color:rgba(242,184,75,.35);background:var(--accent2-soft)}
+
+/* Experience bullets */
+.xp-bullets{margin:10px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.xp-bullets li{font-size:13px;color:var(--muted);line-height:1.65}
+.xp-tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+
+/* Education */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.edu-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);transition:box-shadow .3s,transform .3s,border-color .3s}
+.edu-item:hover{box-shadow:var(--shadow-hover);transform:translateY(-3px);border-color:rgba(76,141,255,.3)}
+.edu-degree{font-size:14.5px;font-weight:600;color:var(--text)}
+.edu-school{font-size:12.5px;color:var(--muted);margin-top:5px}
+.edu-meta{font-family:var(--fm);font-size:11px;color:var(--faint);margin-top:6px}
+.edu-course{font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.65}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.gallery-tile{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--card);cursor:pointer;box-shadow:var(--shadow);transition:box-shadow .3s,transform .3s,border-color .3s}
+.gallery-tile:hover{box-shadow:var(--shadow-hover);transform:translateY(-3px);border-color:rgba(76,141,255,.35)}
+.gallery-tile img{width:100%;height:168px;object-fit:cover;display:block;transition:opacity .2s}
+.gallery-tile:hover img{opacity:.92}
+
+.muted-note{font-size:13px;color:var(--faint);padding:8px 0}
+.muted-note a{color:var(--accent);text-decoration:none}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(4,5,7,.86);display:none;align-items:center;justify-content:center;z-index:200;backdrop-filter:blur(8px)}
 .modal-overlay.open{display:flex}
 .modal-img{max-width:90vw;max-height:86vh;border-radius:12px;display:block}
-.modal-close{position:absolute;top:20px;right:24px;background:var(--card);border:1px solid var(--border);padding:7px 14px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;color:var(--ink)}
-footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:11px;color:var(--faint);font-family:var(--fm)}
+.modal-close{position:absolute;top:20px;right:24px;background:var(--card);border:1px solid var(--border);padding:8px 16px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;color:var(--text);min-height:44px}
+
+footer{border-top:1px solid var(--border);padding:28px 32px;text-align:center;font-size:11px;color:var(--faint);font-family:var(--fm)}
+
+@media(prefers-reduced-motion:reduce){
+  .blob{animation:none}
+  .reveal{transition:none;opacity:1;transform:none}
+  h1,.hero-eyebrow,.hero-role,.pl-badge,.hero-desc,.hero-actions{animation:none;opacity:1}
+}
 @media(max-width:640px){
-.hero{grid-template-columns:1fr}.li-col{display:none}
-main{padding:0 20px 60px}.nav-inner{padding:0 20px}
+  .hero{grid-template-columns:1fr;padding:56px 0 44px}.li-col{display:none}
+  main{padding:0 20px 72px}.nav-inner{padding:0 20px}
+  .nav-links{gap:2px}.nav-links a{padding:9px 10px;font-size:12.5px}
+  section{margin-bottom:64px}
 }
 </style>
 </head>
 <body>
 <nav>
   <div class="nav-inner">
-    <span class="nav-logo">Portfolio</span>
-    <div class="nav-links">
-      <a href="#experience">Experience</a>
-      <a href="#tools">Tools</a>
-      <a href="#designs">Designs</a>
+    <span class="nav-logo"><span class="dot"></span>Portfolio</span>
+    <div class="nav-links" id="navLinks">
+      <a href="#experience" data-sec="experience">Experience</a>
+      <a href="#repos" data-sec="repos">Repos</a>
+      <a href="#skills" data-sec="skills">Skills</a>
+      <a href="#designs" data-sec="designs">Designs</a>
     </div>
   </div>
 </nav>
 <main>
   <div class="hero">
+    <div class="hero-glow" aria-hidden="true"><span class="blob blob-1"></span><span class="blob blob-2"></span></div>
     <div>
-      <div class="hero-eyebrow">Data Analyst · PL-300 Certified</div>
+      <div class="hero-eyebrow">Business Intelligence Analyst, MBA · PL-300 Certified</div>
       <h1><strong>Tejas</strong> Vyasam</h1>
-      <p class="hero-role">BI · Data Engineering · AI &amp; Machine Learning</p>
+      <p class="hero-role" id="roleLine"></p>
+      <div class="hero-meta">
+        <span class="meta-chip work-auth">Open Work Permit · valid to 2029</span>
+      </div>
       <a class="pl-badge" href="https://learn.microsoft.com/api/credentials/share/en-us/TejasVyasam-8587/A22FE37A860DF2A3?sharingId=53BC4AA26E32FB17" target="_blank" rel="noopener">
         <img src="https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg?branch=main" alt="Microsoft PL-300">
       </a>
-      <p class="hero-desc">I build end-to-end data solutions, from executive-grade Power BI dashboards and SQL pipelines to AI agent workflows and machine learning models. My focus is turning operational complexity into reliable, decision-ready intelligence across the full data stack.</p>
+      <p class="hero-desc">MBA-trained Business Intelligence Analyst with 8+ years across BI, data engineering, and supply chain analytics in Canada, Brunei, and India. I build end-to-end data solutions, from executive-grade Power BI dashboards and SQL pipelines to AI agent workflows and machine learning models — turning operational complexity into reliable, decision-ready intelligence across the full data stack.</p>
       <div class="hero-actions">
-        <a class="btn-primary" href="https://github.com/tjas01" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn-ghost" href="https://www.linkedin.com/in/tejasvyasam/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn-primary" href="https://github.com/tjas01" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+        <a class="btn-ghost" href="https://www.linkedin.com/in/tejasvyasam/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M14.82 0H1.18C.53 0 0 .53 0 1.18v13.64C0 15.47.53 16 1.18 16h13.64c.65 0 1.18-.53 1.18-1.18V1.18C16 .53 15.47 0 14.82 0zM4.75 13.6H2.4V6.1h2.35v7.5zM3.57 5.1a1.36 1.36 0 1 1 0-2.72 1.36 1.36 0 0 1 0 2.72zM13.6 13.6h-2.35V9.9c0-.88-.02-2.02-1.23-2.02-1.23 0-1.42.96-1.42 1.96v3.76H6.25V6.1h2.26v1.02h.03c.31-.6 1.08-1.23 2.22-1.23 2.38 0 2.82 1.57 2.82 3.6v4.11z"/></svg>
+          LinkedIn
+        </a>
+        <a class="btn-ghost" href="mailto:tejas.compute@gmail.com">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1.5 4l6.5 5 6.5-5"/></svg>
+          Email
+        </a>
       </div>
     </div>
     <div class="li-col">
@@ -114,55 +218,143 @@ main{padding:0 20px 60px}.nav-inner{padding:0 20px}
   <section>
     <div class="section-label">Overview</div>
     <div class="stats-grid">
-      <div class="stat-card"><div class="stat-num" id="yrs">—</div><div class="stat-label">Years in data</div></div>
-      <div class="stat-card"><div class="stat-num" id="repos">—</div><div class="stat-label">Public repositories</div></div>
-      <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Countries worked in</div></div>
-      <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">Certifications</div></div>
+      <div class="stat-card reveal"><div class="stat-num" data-count data-final="8" id="yrs">0</div><div class="stat-label">Years in data &amp; analytics</div></div>
+      <div class="stat-card reveal"><div class="stat-num" data-count id="repos">0</div><div class="stat-label">Public repositories</div></div>
+      <div class="stat-card reveal"><div class="stat-num" data-count data-final="3" id="countries">0</div><div class="stat-label">Countries worked in</div></div>
     </div>
+  </section>
+
+  <section id="repos">
+    <div class="section-label">Featured GitHub Repos</div>
+    <div class="repo-grid" id="repoGrid"></div>
+    <div class="repo-more"><a href="https://github.com/tjas01?tab=repositories" target="_blank" rel="noopener">View all repositories on GitHub →</a></div>
   </section>
 
   <section id="experience">
     <div class="section-label">Experience</div>
     <div class="xp-list">
-      <div class="xp-item">
-        <div><div class="xp-role">Data Annotation Specialist (AI/ML)</div><div class="xp-company">TELUS International · Vancouver, BC</div></div>
+      <div class="xp-item reveal">
+        <div class="xp-role">Data Annotation Specialist (AI/ML)</div><div class="xp-company">TELUS International · Vancouver, BC</div>
         <div class="xp-date">Oct 2025 – Present</div>
+        <ul class="xp-bullets">
+          <li>Annotate image and video datasets for computer vision model training on proprietary labeling platforms, maintaining accuracy and consistency across guidelines.</li>
+          <li>Review annotated outputs against project specifications to support data quality across AI/ML training workflows.</li>
+          <li>Manage detailed review requirements independently across high-volume dataset workflows.</li>
+        </ul>
+        <div class="xp-tools"><span class="repo-tag">Computer Vision</span><span class="repo-tag">AI/ML Training Data</span></div>
       </div>
-      <div class="xp-item">
-        <div><div class="xp-role">Senior Operations Team Lead</div><div class="xp-company">Vosyn.ai · Etobicoke, ON</div></div>
+      <div class="xp-item reveal">
+        <div class="xp-role">Senior Operations Team Lead</div><div class="xp-company">Vosyn.ai · Etobicoke, ON</div>
         <div class="xp-date">Mar 2025 – Sep 2025</div>
+        <ul class="xp-bullets">
+          <li>Led Data Analytics, PMO, and Process Engineering as a direct C-suite report; authored SOPs and reporting standards governing day-to-day delivery.</li>
+          <li>Designed an n8n AI agent that captured Zoom transcripts, generated department-specific action items, and routed them to Slack and Discord.</li>
+          <li>Engineered an onboarding/offboarding pipeline integrating BreezyHR, HubSpot, QuickBooks, and Azure AD via REST APIs, replacing manual provisioning.</li>
+          <li>Deployed XGBoost regression in Power BI for operational forecasting and ran a sentiment-analysis project on Zoom transcripts; implemented row-level security and GDPR/PIPEDA-aligned governance.</li>
+        </ul>
+        <div class="xp-tools"><span class="repo-tag">n8n</span><span class="repo-tag">Power BI</span><span class="repo-tag">XGBoost</span><span class="repo-tag">SQL Server</span><span class="repo-tag">REST APIs</span></div>
       </div>
-      <div class="xp-item">
-        <div><div class="xp-role">Data Analyst</div><div class="xp-company">Vosyn.ai · Etobicoke, ON</div></div>
+      <div class="xp-item reveal">
+        <div class="xp-role">Data Analyst</div><div class="xp-company">Vosyn.ai · Etobicoke, ON</div>
         <div class="xp-date">Feb 2025 – Mar 2025</div>
+        <ul class="xp-bullets">
+          <li>Automated weekly operational data extraction with Google Apps Script into Google Sheets on a scheduled trigger.</li>
+          <li>Built Power BI dashboards on a star-schema model with DAX measures, Power Query transformations, and conditional formatting for executive stakeholders.</li>
+          <li>Developed a dual-KPI performance framework with bias-correction logic for cross-department reporting, plus XGBoost forecasts for project completion dates.</li>
+        </ul>
+        <div class="xp-tools"><span class="repo-tag">Power BI</span><span class="repo-tag">DAX</span><span class="repo-tag">Python</span><span class="repo-tag">XGBoost</span><span class="repo-tag">Azure</span></div>
       </div>
-      <div class="xp-item">
-        <div><div class="xp-role">Inventory Auditor</div><div class="xp-company">WIS International · Vancouver, BC</div></div>
+      <div class="xp-item reveal">
+        <div class="xp-role">Inventory Auditor <span style="color:var(--faint);font-weight:400">· Part-Time</span></div><div class="xp-company">WIS International · Vancouver, BC</div>
         <div class="xp-date">Nov 2023 – Jan 2025</div>
+        <ul class="xp-bullets">
+          <li>Conducted SKU-level inventory counts against Bill of Materials for clients including MTU Maintenance and K9 Fasteners at 99.9% count accuracy.</li>
+          <li>Processed pick tickets, packing slips, and shipment labels through SAP S/4HANA during high-volume seasonal retail projects.</li>
+          <li>Identified stock variances through root-cause analysis and supported corrective action across client inventory records.</li>
+        </ul>
+        <div class="xp-tools"><span class="repo-tag">SAP S/4HANA</span><span class="repo-tag">RF Scanning</span><span class="repo-tag">BOM Compliance</span></div>
       </div>
-      <div class="xp-item">
-        <div><div class="xp-role">Supply Chain Analyst</div><div class="xp-company">Ya-Nur Trading Company · Brunei Darussalam</div></div>
+      <div class="xp-item reveal">
+        <div class="xp-role">Supply Chain Analyst</div><div class="xp-company">Ya-Nur Trading Company · Brunei Darussalam</div>
         <div class="xp-date">2021 – 2022</div>
+        <ul class="xp-bullets">
+          <li>Built SQL stored procedures unifying finance, sales, procurement, and inventory data across business units into a single source of truth — improving reporting accuracy by 60%.</li>
+          <li>Developed Power BI dashboards tracking supplier delivery performance, lead times, inventory turnover, and seasonal demand.</li>
+          <li>Flagged a significant inventory discrepancy during routine review, triggering a full warehouse audit and corrective action.</li>
+          <li>Posted purchase/sales orders and RFQs through SAP S/4HANA; administered ERP access controls via Jira.</li>
+        </ul>
+        <div class="xp-tools"><span class="repo-tag">SAP S/4HANA</span><span class="repo-tag">SQL</span><span class="repo-tag">Power BI</span><span class="repo-tag">Jira</span></div>
       </div>
-      <div class="xp-item">
-        <div><div class="xp-role">Operations Analyst</div><div class="xp-company">TechnoR Solutions · India</div></div>
+      <div class="xp-item reveal">
+        <div class="xp-role">Operations Analyst</div><div class="xp-company">TechnoR Solutions · India / Brunei</div>
         <div class="xp-date">2016 – 2021</div>
+        <ul class="xp-bullets">
+          <li>Built SQL ETL routines in PostgreSQL ingesting and validating RFID/BLE scan data across 10 asset-tracking locations, maintaining 99% data integrity against BOM compliance standards.</li>
+          <li>Managed a team of 15 across tracking locations; built Tableau dashboards for asset movement, scan cycles, and field-team performance.</li>
+          <li>Automated recurring scan-cycle reporting with Google Apps Script and Excel VBA, cutting manual reporting effort by over 60%.</li>
+          <li>Ran procurement (POs, RFQs) through UCAT ERP on a Brunei Shell Petroleum supply-chain support contract.</li>
+        </ul>
+        <div class="xp-tools"><span class="repo-tag">PostgreSQL</span><span class="repo-tag">SQL</span><span class="repo-tag">Tableau</span><span class="repo-tag">UCAT ERP</span></div>
       </div>
     </div>
   </section>
 
-  <section id="tools">
-    <div class="section-label">Tools &amp; Platforms</div>
-    <div class="tools-wrap" id="toolsWrap"></div>
+  <section id="education">
+    <div class="section-label">Education</div>
+    <div class="edu-grid">
+      <div class="edu-item reveal">
+        <div class="edu-degree">Master of Business Administration (MBA), Business Analytics</div>
+        <div class="edu-school">New York Institute of Technology · Vancouver, Canada</div>
+        <div class="edu-meta">Sep 2023 – May 2025 · GPA 3.71/4.00</div>
+        <div class="edu-course">Coursework: Power BI, SQL, business statistics, supervised &amp; unsupervised machine learning, operations management, supply chain analytics, business process improvement.</div>
+      </div>
+      <div class="edu-item reveal">
+        <div class="edu-degree">Bachelor of Engineering, Electronics &amp; Instrumentation</div>
+        <div class="edu-school">Anna University · Chennai, India</div>
+        <div class="edu-meta">Sep 2012 – Sep 2016</div>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <div class="section-label">Certifications</div>
-    <div class="cert-grid">
-      <div class="cert-item"><div class="cert-name">Power BI Data Analyst Associate</div><div class="cert-meta">Microsoft PL-300 · 2025</div></div>
-      <div class="cert-item"><div class="cert-name">Azure Data Fundamentals</div><div class="cert-meta">Microsoft DP-900 · 2025</div></div>
-      <div class="cert-item"><div class="cert-name">Advanced Data Analytics</div><div class="cert-meta">Google · 2025</div></div>
-      <div class="cert-item"><div class="cert-name">BigQuery</div><div class="cert-meta">Google · 2025</div></div>
+  <section id="skills">
+    <div class="section-label">Skills</div>
+    <div class="skills-groups">
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Languages</div>
+        <div class="tools-wrap" id="skillsLanguages"></div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Databases</div>
+        <div class="tools-wrap" id="skillsDb"></div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">BI &amp; Visualization</div>
+        <div class="tools-wrap" id="skillsBI"></div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Python Libraries</div>
+        <div class="tools-wrap" id="skillsPython"></div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Machine Learning</div>
+        <div class="tools-wrap" id="skillsML"></div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Data Modeling &amp; Engineering</div>
+        <div class="tools-wrap" id="skillsData"></div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Cloud &amp; Data Platforms</div>
+        <div class="tools-wrap" id="skillsCloud"></div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Automation &amp; AI</div>
+        <div class="tools-wrap" id="skillsAuto"></div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">ERP &amp; Business Systems</div>
+        <div class="tools-wrap" id="skillsBiz"></div>
+      </div>
     </div>
   </section>
 
@@ -181,25 +373,161 @@ main{padding:0 20px 60px}.nav-inner{padding:0 20px}
 
 <script>
 const USER="tjas01",REPO="tjas01.github.io",BRANCH="main";
-const tools=["Power BI","DAX","Power Query","SQL","PostgreSQL","MySQL","T-SQL","Python","Pandas","NumPy","Scikit-learn","XGBoost","Tableau","n8n","Power Automate","Azure","Microsoft Fabric","BigQuery","Databricks","Snowflake","SAP S/4HANA","Docker","Git","REST APIs","Google Apps Script","Excel","Visio","Notion"];
-const wrap=document.getElementById("toolsWrap");
-tools.sort((a,b)=>a.localeCompare(b)).forEach(t=>{const s=document.createElement("span");s.className="tool-tag";s.textContent=t;wrap.appendChild(s);});
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const SKILL_GROUPS={
+  skillsLanguages:["Python","SQL","T-SQL","R","JSON"],
+  skillsDb:["PostgreSQL","MySQL","Microsoft SQL Server"],
+  skillsBI:["Power BI (PL-300)","DAX","Power Query","Tableau","IBCS Standards","Row-Level Security"],
+  skillsPython:["Pandas","NumPy","SciPy","Statsmodels","Scikit-learn","XGBoost","TensorFlow","Matplotlib","Streamlit","OpenAI","Hugging Face Transformers"],
+  skillsML:["Linear/Logistic Regression","Random Forest","Gradient Boosting","Neural Networks","K-Means Clustering","Collaborative Filtering (SVD)","Recommendation Systems","Anomaly Detection","Association Rule Mining","A/B Testing"],
+  skillsData:["Star Schema","Snowflake Schema","Medallion Architecture","ETL/ELT","Data Warehousing","Data Lineage","Stored Procedures","SQL Views","Docker"],
+  skillsCloud:["Azure","Microsoft Fabric","Snowflake","BigQuery","Databricks","Git/GitHub"],
+  skillsAuto:["n8n","Power Automate","Google Apps Script","REST APIs","Ollama","Qdrant"],
+  skillsBiz:["SAP S/4HANA","HubSpot","BreezyHR","QuickBooks","Jira","SharePoint","Visio","Notion"]
+};
+Object.entries(SKILL_GROUPS).forEach(([id,items])=>{
+  const wrap=document.getElementById(id);
+  if(!wrap)return;
+  items.forEach(t=>{const s=document.createElement("span");s.className="tool-tag";s.textContent=t;wrap.appendChild(s);});
+});
 document.getElementById("yr").textContent=new Date().getFullYear();
-function calcYears(){
-  const s=new Date(Date.UTC(2016,6,1)),n=new Date();
-  let y=n.getUTCFullYear()-s.getUTCFullYear();
-  if(n.getUTCMonth()<s.getUTCMonth()||(n.getUTCMonth()===s.getUTCMonth()&&n.getUTCDate()<s.getUTCDate()))y--;
-  document.getElementById("yrs").textContent=y;
+
+/* ---- rotating role line ---- */
+const ROLES=["BI & Data Engineering","AI & Machine Learning","Power BI & DAX","Data Storytelling"];
+const roleEl=document.getElementById("roleLine");
+if(reduceMotion){
+  roleEl.textContent=ROLES.join(" · ");
+}else{
+  let ri=0;
+  const span=document.createElement("span");span.className="role-cycle";span.textContent=ROLES[0];
+  roleEl.appendChild(span);
+  setInterval(()=>{
+    span.style.transition="opacity .3s";span.style.opacity="0";
+    setTimeout(()=>{ri=(ri+1)%ROLES.length;span.textContent=ROLES[ri];span.style.opacity="1";},320);
+  },3200);
 }
-calcYears();
-async function loadRepos(){
+
+/* ---- scroll reveal ---- */
+function observeReveal(){
+  const els=document.querySelectorAll(".reveal:not(.revealed)");
+  if(reduceMotion){els.forEach(e=>e.classList.add("revealed"));return;}
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        const grid=en.target.parentElement;
+        const idx=Array.prototype.indexOf.call(grid.children,en.target);
+        en.target.style.transitionDelay=Math.min(idx,8)*55+"ms";
+        en.target.classList.add("revealed");
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:.15});
+  els.forEach(el=>io.observe(el));
+}
+
+/* ---- animated counters ---- */
+function animateCounters(){
+  document.querySelectorAll("[data-count]").forEach(el=>{
+    const final=parseInt(el.getAttribute("data-final")||el.textContent,10)||0;
+    if(reduceMotion){el.textContent=final;return;}
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){
+          const start=performance.now(),dur=800;
+          function tick(now){
+            const p=Math.min((now-start)/dur,1);
+            el.textContent=Math.round(final*(1-Math.pow(1-p,3)));
+            if(p<1)requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+          io.unobserve(el);
+        }
+      });
+    },{threshold:.4});
+    io.observe(el);
+  });
+}
+
+/* ---- nav active state ---- */
+function observeNav(){
+  const sections=document.querySelectorAll("main section[id]");
+  const links=document.querySelectorAll(".nav-links a");
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        links.forEach(l=>l.classList.toggle("active", l.dataset.sec===en.target.id));
+      }
+    });
+  },{rootMargin:"-40% 0px -50% 0px"});
+  sections.forEach(s=>io.observe(s));
+}
+
+async function loadRepoStats(){
   try{
     const r=await fetch(`https://api.github.com/users/${USER}`,{headers:{Accept:"application/vnd.github+json"}});
     const j=await r.json();
-    document.getElementById("repos").textContent=j.public_repos??0;
-  }catch(e){}
+    document.getElementById("repos").setAttribute("data-final", j.public_repos??0);
+  }catch(e){document.getElementById("repos").setAttribute("data-final",0);}
+  animateCounters();
 }
-loadRepos();
+
+/* ---- featured repos ---- */
+const LANG_COLORS={Python:"#3572A5","T-SQL":"#e38c00",TSQL:"#e38c00",PowerShell:"#012456",HTML:"#e34c26",JavaScript:"#f1e05a"};
+const FEATURED_REPOS=[
+  {repo:"powerbi-ml-sales-forecast-xgboost",title:"Power BI Sales Forecast + XGBoost",
+   blurb:"End-to-end Power BI build with a star-schema model and DAX time intelligence, extended with an XGBoost forecast comparison — built to PL-300 certification standards.",
+   tags:["Power BI","DAX","Power Query","Python","XGBoost"]},
+  {repo:"healthcare-analytics-project",title:"Healthcare ED Analytics (Canada)",
+   blurb:"Power BI reporting on national Emergency Department data (Apr 2024–Mar 2025), styled after Fraser Health / CIHI / PHSA executive reporting with OCAP-aligned aggregate handling.",
+   tags:["Power BI","DAX","Data Modeling","Healthcare"]},
+  {repo:"Supervised-MLM",title:"Supervised ML Model Comparison",
+   blurb:"Side-by-side supervised learning pipeline — Linear Regression, Random Forest, Gradient Boosting, and a Neural Network — benchmarked on the Kaggle Ames Housing dataset.",
+   tags:["Python","Scikit-learn","XGBoost","TensorFlow"]},
+  {repo:"data-analyst-job-search",title:"AI Job-Matching Agent",
+   blurb:"A self-updating agent that pulls analyst postings from 9 sources daily and scores each one against a candidate profile with Gemini AI, surfacing the best matches automatically.",
+   tags:["Python","Gemini AI","Automation"]},
+  {repo:"ai-automation-stack",title:"Self-Hosted AI Automation Stack",
+   blurb:"Docker Compose stack pairing n8n workflow orchestration with Postgres, a Qdrant vector store, and local LLMs via Ollama for self-hosted RAG and automation.",
+   tags:["Docker","n8n","Qdrant","Ollama"]}
+];
+function timeAgo(d){
+  const s=Math.floor((Date.now()-d.getTime())/1000);
+  const units=[["y",31536000],["mo",2592000],["d",86400],["h",3600],["m",60]];
+  for(const [label,secs] of units){const v=Math.floor(s/secs);if(v>=1)return v+label+" ago";}
+  return "just now";
+}
+async function loadFeaturedRepos(){
+  const grid=document.getElementById("repoGrid");
+  let byName={};
+  try{
+    const r=await fetch(`https://api.github.com/users/${USER}/repos?per_page=100`,{headers:{Accept:"application/vnd.github+json"}});
+    if(r.ok){(await r.json()).forEach(x=>byName[x.name]=x);}
+  }catch(e){}
+  FEATURED_REPOS.forEach((f,i)=>{
+    const meta=byName[f.repo]||{};
+    const lang=meta.language||f.tags[0]||"";
+    const dotColor=LANG_COLORS[lang]||"var(--accent)";
+    const card=document.createElement("a");
+    card.href=meta.html_url||`https://github.com/${USER}/${f.repo}`;
+    card.target="_blank";card.rel="noopener";
+    card.className="repo-card reveal";
+    const updated=meta.pushed_at?timeAgo(new Date(meta.pushed_at)):"";
+    card.innerHTML=`
+      <div class="repo-top">
+        <span class="repo-lang"><span class="dot" style="background:${dotColor}"></span>${lang}</span>
+        ${meta.stargazers_count?`<span class="repo-stars">★ ${meta.stargazers_count}</span>`:""}
+      </div>
+      <div class="repo-title">${f.title}</div>
+      <p class="repo-blurb">${f.blurb}</p>
+      <div class="repo-tags">${f.tags.map(t=>`<span class="repo-tag">${t}</span>`).join("")}</div>
+      <div class="repo-foot"><span>${updated?("Updated "+updated):""}</span><span class="repo-arrow">→</span></div>
+    `;
+    grid.appendChild(card);
+  });
+  observeReveal();
+}
+
 function isImg(n){return/\.(png|jpe?g|gif|webp|svg)$/i.test(n);}
 function raw(p){return`https://raw.githubusercontent.com/${USER}/${REPO}/${BRANCH}/${p}`;}
 async function loadGallery(){
@@ -216,18 +544,25 @@ async function loadGallery(){
       return{name:f.name,src:raw(f.path),date:d?new Date(d):new Date(0)};
     }));
     const entries=withDates.filter(x=>x.status==="fulfilled").map(x=>x.value).sort((a,b)=>b.date-a.date);
-    if(!entries.length){g.innerHTML='<p style="font-size:13px;color:var(--faint);padding:8px 0">No images found in repository root.</p>';return;}
+    if(!entries.length){g.innerHTML='<p class="muted-note">No images found in repository root.</p>';return;}
     entries.forEach(it=>{
-      const div=document.createElement("div");div.className="gallery-tile";
+      const div=document.createElement("div");div.className="gallery-tile reveal";
       div.innerHTML=`<img src="${it.src}" alt="${it.name}" loading="lazy">`;
       div.onclick=()=>{document.getElementById("modalImg").src=it.src;document.getElementById("modal").classList.add("open");};
       g.appendChild(div);
     });
-  }catch(e){g.innerHTML='<p style="font-size:13px;color:var(--faint);padding:8px 0">Gallery unavailable.</p>';}
+    observeReveal();
+  }catch(e){g.innerHTML='<p class="muted-note">Gallery unavailable.</p>';}
 }
+
+loadRepoStats();
+loadFeaturedRepos();
 loadGallery();
+observeReveal();
+observeNav();
 document.getElementById("modalClose").onclick=()=>document.getElementById("modal").classList.remove("open");
 document.getElementById("modal").onclick=e=>{if(e.target.id==="modal")document.getElementById("modal").classList.remove("open");};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("modal").classList.remove("open");});
 </script>
 </body>
 </html>
