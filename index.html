@@ -141,7 +141,8 @@ a.meta-chip:hover{border-color:var(--klein);color:var(--klein)}
 .btn-ghost:hover{border-color:var(--klein);color:var(--klein);transform:translateY(-2px)}
 .btn-ghost:active{transform:scale(.97)}
 .btn-primary svg,.btn-ghost svg{width:16px;height:16px;flex-shrink:0}
-.pl-badge{display:inline-flex;align-items:center;gap:12px;margin-top:30px;text-decoration:none;padding:10px 16px 10px 10px;border:1px solid var(--border);border-radius:12px;background:var(--card);box-shadow:var(--shadow);transition:transform .2s var(--ease-pop),box-shadow .25s}
+.pl-badges{display:flex;flex-direction:column;gap:12px;margin-top:30px}
+.pl-badge{display:inline-flex;align-items:center;gap:12px;text-decoration:none;padding:10px 16px 10px 10px;border:1px solid var(--border);border-radius:12px;background:var(--card);box-shadow:var(--shadow);transition:transform .2s var(--ease-pop),box-shadow .25s}
 .pl-badge:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
 .pl-badge img{width:52px;display:block}
 .pl-badge .t{font-size:12.5px;line-height:1.45}
@@ -192,7 +193,7 @@ a.meta-chip:hover{border-color:var(--klein);color:var(--klein)}
 .chart-legend{display:flex;flex-wrap:wrap;gap:16px;padding:14px 8px 2px;font-family:var(--fm);font-size:11.5px;color:var(--muted)}
 .chart-legend .key{display:inline-flex;align-items:center;gap:7px}
 .chart-legend .sw{width:16px;height:9px;border-radius:3px;display:inline-block}
-.sw.ca{background:var(--klein)}.sw.in{background:var(--teal)}
+.sw.ca{background:var(--klein)}
 .sw.edu{background:transparent;border:1.6px solid var(--klein)}
 .tl-grid-line{stroke:var(--border);stroke-width:1}
 .tl-axis{stroke:var(--border-strong);stroke-width:1.5;stroke-dasharray:900;stroke-dashoffset:900}
@@ -222,7 +223,6 @@ a.meta-chip:hover{border-color:var(--klein);color:var(--klein)}
 .xp-item{position:relative;padding:0 0 34px 24px}
 .xp-item:last-child{padding-bottom:4px}
 .xp-item::before{content:"";position:absolute;left:-32px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--paper);border:2.5px solid var(--klein)}
-.xp-item[data-loc="in"]::before{border-color:var(--teal)}
 .xp-role{font-family:var(--fd);font-size:17px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
 .xp-role .pt{color:var(--faint);font-weight:500;font-size:14px}
 .xp-company{font-size:13.5px;color:var(--muted);margin-top:4px}
@@ -405,10 +405,16 @@ footer .sql .ok{color:var(--teal)}
           Email
         </a>
       </div>
-      <a class="pl-badge hs hs-7" href="https://learn.microsoft.com/api/credentials/share/en-us/TejasVyasam-8587/A22FE37A860DF2A3?sharingId=53BC4AA26E32FB17" target="_blank" rel="noopener">
-        <img src="https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg?branch=main" alt="Microsoft Certified Associate badge">
-        <span class="t"><b>Microsoft PL-300</b><span>Power BI Data Analyst Associate · verify credential →</span></span>
-      </a>
+      <div class="pl-badges hs hs-7">
+        <a class="pl-badge" href="https://www.iiba.org/business-analysis-certifications/cbap/" target="_blank" rel="noopener">
+          <img src="https://www.iiba.org/globalassets/digital-badges/images/cbap-cert-badge-400x400.png" alt="IIBA CBAP certification badge">
+          <span class="t"><b>CBAP</b><span>Certified Business Analysis Professional · in progress →</span></span>
+        </a>
+        <a class="pl-badge" href="https://learn.microsoft.com/api/credentials/share/en-us/TejasVyasam-8587/A22FE37A860DF2A3?sharingId=53BC4AA26E32FB17" target="_blank" rel="noopener">
+          <img src="https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg?branch=main" alt="Microsoft Certified Associate badge">
+          <span class="t"><b>Microsoft PL-300</b><span>Power BI Data Analyst Associate · verify credential →</span></span>
+        </a>
+      </div>
     </div>
     <aside class="hero-side hs hs-5" aria-label="LinkedIn profile">
       <p class="side-note">Verified profile</p>
@@ -460,17 +466,17 @@ footer .sql .ok{color:var(--teal)}
           </g>
           <!-- bars (drawn oldest → newest) -->
           <text class="tl-lab" x="70" y="263">TechnoR Solutions · Business Systems Analyst · India</text>
-          <rect class="tl-bar b7" x="70" y="268" width="415" height="16" rx="8" fill="var(--teal)" tabindex="0"
+          <rect class="tl-bar b7" x="70" y="268" width="415" height="16" rx="8" fill="var(--klein)" tabindex="0"
             data-tip="Business Systems Analyst · TechnoR Solutions|Southern India · 2016 – 2021"><title>Business Systems Analyst · TechnoR Solutions · 2016–2021</title></rect>
           <text class="tl-lab" x="485" y="225">Ya-Nur Trading Company · Business Systems Analyst</text>
-          <rect class="tl-bar b6" x="485" y="230" width="222" height="16" rx="8" fill="var(--teal)" tabindex="0"
+          <rect class="tl-bar b6" x="485" y="230" width="222" height="16" rx="8" fill="var(--klein)" tabindex="0"
             data-tip="Business Systems Analyst · Ya-Nur Trading Company|2021 – 2023"><title>Business Systems Analyst · Ya-Nur Trading Company · 2021–2023</title></rect>
           <text class="tl-lab" x="708" y="187">MBA · NYIT, Vancouver</text>
           <rect class="tl-bar b5" x="708" y="192" width="138" height="16" rx="8" fill="none" stroke="var(--klein)" stroke-width="2" tabindex="0"
             data-tip="MBA, Business Analytics · NYIT|Vancouver · Sep 2023 – May 2025 · GPA 3.71"><title>MBA · NYIT Vancouver · 2023–2025</title></rect>
-          <text class="tl-lab" x="720" y="149">WIS International (part-time)</text>
-          <rect class="tl-bar b4" x="720" y="154" width="97" height="16" rx="8" fill="var(--klein)" opacity="0.55" tabindex="0"
-            data-tip="Inventory Auditor (part-time) · WIS International|Vancouver · Nov 2023 – Jan 2025"><title>Inventory Auditor · WIS International · 2023–2025</title></rect>
+          <text class="tl-lab" x="720" y="149">WIS International</text>
+          <rect class="tl-bar b4" x="720" y="154" width="97" height="16" rx="8" fill="var(--klein)" tabindex="0"
+            data-tip="Inventory Auditor · WIS International|Vancouver · Nov 2023 – Jan 2025"><title>Inventory Auditor · WIS International · 2023–2025</title></rect>
           <text class="tl-lab" x="820" y="111">Vosyn.ai · Data Analyst</text>
           <rect class="tl-bar b3" x="824" y="116" width="48" height="16" rx="8" fill="var(--klein)" tabindex="0"
             data-tip="Data Analyst · Vosyn.ai|Toronto, ON · Feb – Sep 2025"><title>Data Analyst · Vosyn.ai · Feb–Sep 2025</title></rect>
@@ -496,15 +502,14 @@ footer .sql .ok{color:var(--teal)}
         </svg>
       </div>
       <div class="chart-legend" aria-hidden="true">
-        <span class="key"><span class="sw ca"></span>Canada</span>
-        <span class="key"><span class="sw in"></span>International</span>
+        <span class="key"><span class="sw ca"></span>Career</span>
         <span class="key"><span class="sw edu"></span>Education</span>
       </div>
       <div class="tl-tip" id="tlTip" role="status"></div>
     </div>
 
     <div class="xp-list">
-      <div class="xp-item reveal" data-loc="ca">
+      <div class="xp-item reveal">
         <div class="xp-role">Business Systems Analyst <span class="pt">· Contract, Full-Time</span></div>
         <div class="xp-company">Avani Cognition · Ontario, Canada (Remote)</div>
         <div class="xp-date">Feb 2026 – Present</div>
@@ -517,7 +522,7 @@ footer .sql .ok{color:var(--teal)}
         </ul>
         <div class="xp-tools"><span class="tag">Linux</span><span class="tag">VPS Infrastructure</span><span class="tag">GitHub</span><span class="tag">GitHub CI/CD</span><span class="tag">Firewall Configuration</span><span class="tag">Claude Code</span><span class="tag">Draw.io</span></div>
       </div>
-      <div class="xp-item reveal" data-loc="ca">
+      <div class="xp-item reveal">
         <div class="xp-role">Data Annotation Specialist (AI/ML) <span class="pt">· Contract</span></div>
         <div class="xp-company">TELUS International · Vancouver, BC</div>
         <div class="xp-date">Oct 2025 – Jan 2026</div>
@@ -529,7 +534,7 @@ footer .sql .ok{color:var(--teal)}
         </ul>
         <div class="xp-tools"><span class="tag">Computer Vision</span><span class="tag">AI/ML Training Data</span></div>
       </div>
-      <div class="xp-item reveal" data-loc="ca">
+      <div class="xp-item reveal">
         <div class="xp-role">Data Analyst <span class="pt">· Contract</span></div>
         <div class="xp-company">Vosyn.ai · Toronto, ON</div>
         <div class="xp-date">Feb 2025 – Sep 2025</div>
@@ -544,8 +549,8 @@ footer .sql .ok{color:var(--teal)}
         </ul>
         <div class="xp-tools"><span class="tag">n8n</span><span class="tag">Power Automate</span><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">XGBoost</span><span class="tag">SQL Server</span><span class="tag">Visio</span><span class="tag">REST APIs</span><span class="tag">Databricks</span><span class="tag">Snowflake</span></div>
       </div>
-      <div class="xp-item reveal" data-loc="ca">
-        <div class="xp-role">Inventory Auditor <span class="pt">· Part-Time</span></div>
+      <div class="xp-item reveal">
+        <div class="xp-role">Inventory Auditor</div>
         <div class="xp-company">WIS International · Vancouver, BC</div>
         <div class="xp-date">Nov 2023 – Jan 2025</div>
         <p class="xp-about">WIS International is a leading global inventory service provider, delivering technology-driven inventory data collection and supply chain optimization services across retail, healthcare, manufacturing, and aerospace sectors globally.</p>
@@ -556,7 +561,7 @@ footer .sql .ok{color:var(--teal)}
         </ul>
         <div class="xp-tools"><span class="tag">SAP S/4HANA</span><span class="tag">BOM Compliance</span><span class="tag">RF Scanning</span></div>
       </div>
-      <div class="xp-item reveal" data-loc="in">
+      <div class="xp-item reveal">
         <div class="xp-role">Business Systems Analyst <span class="pt">· Full-Time</span></div>
         <div class="xp-company">Ya-Nur Trading Company</div>
         <div class="xp-date">2021 – 2023</div>
@@ -571,7 +576,7 @@ footer .sql .ok{color:var(--teal)}
         </ul>
         <div class="xp-tools"><span class="tag">SAP S/4HANA</span><span class="tag">Financial Data Analysis</span><span class="tag">Jira Service Management</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">PostgreSQL</span><span class="tag">Power Query</span><span class="tag">Excel</span></div>
       </div>
-      <div class="xp-item reveal" data-loc="in">
+      <div class="xp-item reveal">
         <div class="xp-role">Business Systems Analyst <span class="pt">· Full-Time</span></div>
         <div class="xp-company">TechnoR Solutions · Southern India</div>
         <div class="xp-date">2016 – 2021</div>
