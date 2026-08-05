@@ -200,8 +200,8 @@ a.meta-chip:hover{border-color:var(--klein);color:var(--klein)}
 .tl-tick{font-family:var(--fm);font-size:12px;fill:var(--faint)}
 .tl-bar{transform:scaleX(0);transform-box:fill-box;transform-origin:left center;cursor:pointer;outline-offset:3px}
 .chart.drawn .tl-bar{transform:scaleX(1);transition:transform .75s var(--ease-out)}
-.chart.drawn .b6{transition-delay:.1s}.chart.drawn .b5{transition-delay:.24s}.chart.drawn .b4{transition-delay:.38s}
-.chart.drawn .b3{transition-delay:.5s}.chart.drawn .b2{transition-delay:.6s}.chart.drawn .b1{transition-delay:.7s}
+.chart.drawn .b7{transition-delay:.1s}.chart.drawn .b6{transition-delay:.22s}.chart.drawn .b5{transition-delay:.34s}
+.chart.drawn .b4{transition-delay:.44s}.chart.drawn .b3{transition-delay:.54s}.chart.drawn .b2{transition-delay:.62s}.chart.drawn .b1{transition-delay:.7s}
 .tl-bar:hover,.tl-bar:focus-visible{filter:brightness(1.12)}
 .tl-lab{font-family:var(--fm);font-size:11px;fill:var(--muted);opacity:0}
 .chart.drawn .tl-lab{opacity:1;transition:opacity .6s .75s}
@@ -443,12 +443,12 @@ footer .sql .ok{color:var(--teal)}
   <section id="career" aria-label="Career trajectory">
     <div class="fig-head reveal">
       <div class="fig-no">Fig. 02 · Career trajectory</div>
-      <h2 class="fig-title">Five roles, two countries, one steady climb</h2>
+      <h2 class="fig-title">Six roles, two countries, one steady climb</h2>
       <p class="fig-cap">Each bar is a role, positioned on a real time axis. Filled bars are employment; the outlined bar is the MBA. Hover any bar for detail.</p>
     </div>
     <div class="chart-card reveal">
       <div class="chart-scroll">
-        <svg class="chart" id="careerChart" viewBox="0 0 1000 336" role="img" aria-label="Career timeline chart from 2016 to 2026: Business Systems Analyst at TechnoR Solutions in Southern India 2016 to 2021, Business Systems Analyst at Ya-Nur Trading Company 2021 to 2022, MBA at NYIT Vancouver 2023 to 2025, Inventory Auditor at WIS International 2023 to 2025, Data Analyst at Vosyn.ai in Toronto from February to September 2025, Business Systems Analyst at Avani Cognition remote from Ontario, Canada, February 2026 to present.">
+        <svg class="chart" id="careerChart" viewBox="0 0 1000 336" role="img" aria-label="Career timeline chart from 2016 to 2026: Business Systems Analyst at TechnoR Solutions in Southern India 2016 to 2021, Business Systems Analyst at Ya-Nur Trading Company 2021 to 2023, MBA at NYIT Vancouver 2023 to 2025, Inventory Auditor at WIS International 2023 to 2025, Data Analyst at Vosyn.ai in Toronto from February to September 2025, Data Annotation Specialist at TELUS International in Vancouver October 2025 to January 2026, Business Systems Analyst at Avani Cognition remote from Ontario, Canada, February 2026 to present.">
           <!-- year grid lines -->
           <g aria-hidden="true">
             <line class="tl-grid-line" x1="70" y1="28" x2="70" y2="306"/>
@@ -460,22 +460,25 @@ footer .sql .ok{color:var(--teal)}
           </g>
           <!-- bars (drawn oldest → newest) -->
           <text class="tl-lab" x="70" y="263">TechnoR Solutions · Business Systems Analyst · India</text>
-          <rect class="tl-bar b6" x="70" y="268" width="415" height="16" rx="8" fill="var(--teal)" tabindex="0"
+          <rect class="tl-bar b7" x="70" y="268" width="415" height="16" rx="8" fill="var(--teal)" tabindex="0"
             data-tip="Business Systems Analyst · TechnoR Solutions|Southern India · 2016 – 2021"><title>Business Systems Analyst · TechnoR Solutions · 2016–2021</title></rect>
           <text class="tl-lab" x="485" y="225">Ya-Nur Trading Company · Business Systems Analyst</text>
-          <rect class="tl-bar b5" x="485" y="230" width="83" height="16" rx="8" fill="var(--teal)" tabindex="0"
-            data-tip="Business Systems Analyst · Ya-Nur Trading Company|2021 – 2022"><title>Business Systems Analyst · Ya-Nur Trading Company · 2021–2022</title></rect>
+          <rect class="tl-bar b6" x="485" y="230" width="222" height="16" rx="8" fill="var(--teal)" tabindex="0"
+            data-tip="Business Systems Analyst · Ya-Nur Trading Company|2021 – 2023"><title>Business Systems Analyst · Ya-Nur Trading Company · 2021–2023</title></rect>
           <text class="tl-lab" x="708" y="187">MBA · NYIT, Vancouver</text>
-          <rect class="tl-bar b4" x="708" y="192" width="138" height="16" rx="8" fill="none" stroke="var(--klein)" stroke-width="2" tabindex="0"
+          <rect class="tl-bar b5" x="708" y="192" width="138" height="16" rx="8" fill="none" stroke="var(--klein)" stroke-width="2" tabindex="0"
             data-tip="MBA, Business Analytics · NYIT|Vancouver · Sep 2023 – May 2025 · GPA 3.71"><title>MBA · NYIT Vancouver · 2023–2025</title></rect>
           <text class="tl-lab" x="720" y="149">WIS International (part-time)</text>
-          <rect class="tl-bar b3" x="720" y="154" width="97" height="16" rx="8" fill="var(--klein)" opacity="0.55" tabindex="0"
+          <rect class="tl-bar b4" x="720" y="154" width="97" height="16" rx="8" fill="var(--klein)" opacity="0.55" tabindex="0"
             data-tip="Inventory Auditor (part-time) · WIS International|Vancouver · Nov 2023 – Jan 2025"><title>Inventory Auditor · WIS International · 2023–2025</title></rect>
           <text class="tl-lab" x="820" y="111">Vosyn.ai · Data Analyst</text>
-          <rect class="tl-bar b2" x="824" y="116" width="48" height="16" rx="8" fill="var(--klein)" tabindex="0"
+          <rect class="tl-bar b3" x="824" y="116" width="48" height="16" rx="8" fill="var(--klein)" tabindex="0"
             data-tip="Data Analyst · Vosyn.ai|Toronto, ON · Feb – Sep 2025"><title>Data Analyst · Vosyn.ai · Feb–Sep 2025</title></rect>
-          <text class="tl-lab" x="949" y="73" text-anchor="end">Avani Cognition · Business Systems Analyst</text>
-          <rect class="tl-bar b1" x="907" y="78" width="42" height="16" rx="8" fill="var(--klein)" tabindex="0"
+          <text class="tl-lab" x="879" y="73">TELUS International</text>
+          <rect class="tl-bar b2" x="879" y="78" width="28" height="16" rx="8" fill="var(--klein)" tabindex="0"
+            data-tip="Data Annotation Specialist (AI/ML) · TELUS International|Vancouver, BC · Oct 2025 – Jan 2026"><title>Data Annotation Specialist · TELUS International · Oct 2025–Jan 2026</title></rect>
+          <text class="tl-lab" x="949" y="35" text-anchor="end">Avani Cognition · Business Systems Analyst</text>
+          <rect class="tl-bar b1" x="907" y="40" width="42" height="16" rx="8" fill="var(--klein)" tabindex="0"
             data-tip="Business Systems Analyst · Avani Cognition|Ontario, Canada (Remote) · Feb 2026 – Present"><title>Business Systems Analyst · Avani Cognition · Feb 2026–Present</title></rect>
           <!-- today marker -->
           <line class="tl-today" x1="949" y1="24" x2="949" y2="306" aria-hidden="true"/>
@@ -515,6 +518,18 @@ footer .sql .ok{color:var(--teal)}
         <div class="xp-tools"><span class="tag">Linux</span><span class="tag">VPS Infrastructure</span><span class="tag">GitHub</span><span class="tag">GitHub CI/CD</span><span class="tag">Firewall Configuration</span><span class="tag">Claude Code</span><span class="tag">Draw.io</span></div>
       </div>
       <div class="xp-item reveal" data-loc="ca">
+        <div class="xp-role">Data Annotation Specialist (AI/ML) <span class="pt">· Contract</span></div>
+        <div class="xp-company">TELUS International · Vancouver, BC</div>
+        <div class="xp-date">Oct 2025 – Jan 2026</div>
+        <p class="xp-about">TELUS International provides AI training data and content moderation services for global technology clients.</p>
+        <ul class="xp-bullets">
+          <li>Annotated image and video datasets for computer vision model training on proprietary labeling platforms, maintaining accuracy and consistency across guidelines.</li>
+          <li>Reviewed annotated outputs against project specifications to support data quality across AI/ML training workflows.</li>
+          <li>Managed detailed review requirements independently across high-volume dataset workflows.</li>
+        </ul>
+        <div class="xp-tools"><span class="tag">Computer Vision</span><span class="tag">AI/ML Training Data</span></div>
+      </div>
+      <div class="xp-item reveal" data-loc="ca">
         <div class="xp-role">Data Analyst <span class="pt">· Contract</span></div>
         <div class="xp-company">Vosyn.ai · Toronto, ON</div>
         <div class="xp-date">Feb 2025 – Sep 2025</div>
@@ -544,7 +559,7 @@ footer .sql .ok{color:var(--teal)}
       <div class="xp-item reveal" data-loc="in">
         <div class="xp-role">Business Systems Analyst <span class="pt">· Full-Time</span></div>
         <div class="xp-company">Ya-Nur Trading Company</div>
-        <div class="xp-date">2021 – 2022</div>
+        <div class="xp-date">2021 – 2023</div>
         <p class="xp-about">Ya-Nur Trading Company is a multi-entity retail and supply chain operation under Serikhandi Corporation, a regional conglomerate with oil, gas, and diversified commercial interests across the Middle East, operating supermarkets, restaurants, hardware stores, warehouses, and farms.</p>
         <ul class="xp-bullets">
           <li>Engineered SQL stored procedures to extract, validate, and unify enterprise data, improving reporting accuracy by over 60%.</li>
