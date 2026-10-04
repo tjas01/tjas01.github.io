@@ -1,33 +1,29 @@
-# Hi, I'm Tejas Vyasam 👋
+# Tejas Vyasam, MBA
 
-I am a **Data Analyst** with an MBA in Business Analytics, experienced in building decision-ready insights, lightweight automations, and scalable data governance practices. My work spans across **Power BI dashboards**, **ETL pipelines** (Python, n8n, Fabric), and applied **machine learning** to deliver analytics that directly support business outcomes.
+Business Systems Analyst with experience in procurement, inventory, ERP support and business intelligence across Canada, Brunei and India. Based in Surrey, British Columbia, and open to opportunities across Canada.
 
----
+## Professional focus
 
-## 🔧 Skills and Tools
+My career developed from procurement and supply chain operations into SAP support, operational reporting, business intelligence and business systems analysis. My portfolio presents detailed employer contributions alongside separate personal analytics and automation projects.
 
-- **Analytics & Visualization**: Power BI (DAX, Power Query, Modeling), Tableau, Excel (Advanced), Looker Studio  
-- **Data Engineering**: SQL (joins, CTEs, window functions), ETL, Microsoft Fabric, Databricks, BigQuery  
-- **Automation & AI**: Python, n8n, Make, GitHub Actions, Docker, LLM + RAG stacks (Ollama, Qdrant)  
-- **Machine Learning**: supervised/unsupervised, regression, clustering, recommender systems, random forest, gradient boosting, neural networks  
-- **Business & Process**: SIPOC, SOP authoring, stakeholder communication, data governance and quality frameworks  
+- Supply chain and procurement: RFQs, purchase requisitions and orders, supplier evaluation, inventory analysis and material planning.
+- ERP and systems: SAP MM, SAP S/4HANA, master data, access controls, requirements documentation and migration support.
+- Business intelligence: Power BI, SQL, Power Query, DAX, Tableau and advanced Excel.
+- Technical implementation: workflow automation, Linux VPS deployment, GitHub CI/CD and ongoing SQL/Databricks lakehouse development.
 
----
+## Portfolio projects
 
-## 📊 GitHub Activity
+- [Sales performance and forecasting](https://github.com/tjas01/powerbi-ml-sales-forecast-xgboost)
+- [Canadian emergency department analytics](https://github.com/tjas01/healthcare-analytics-project)
+- [House price model comparison](https://github.com/tjas01/Supervised-MLM)
+- [Self-hosted automation stack](https://github.com/tjas01/ai-automation-stack)
+- [Infrastructure automation with Ansible](https://github.com/tjas01/ansible-in-docker)
+- [Automated analyst job feed](https://github.com/tjas01/data-analyst-job-search)
 
-- 🔹 **Repos Published**: exploring analytics projects, ETL automation, and ML demos  
-- 🔹 **Recent Work**: transcript analytics (topic modeling, sentiment, clustering, anomaly detection)  
-- 🔹 **Focus Areas**: automating reporting, building reliable data pipelines, and making AI explainable for decision makers  
+## Contact
 
----
+- [Portfolio website](https://tjas01.github.io/)
+- [LinkedIn](https://www.linkedin.com/in/tejasvyasam/)
+- Email: tejas.compute@gmail.com
 
-## 🌐 Connect With Me
-
-- [Portfolio Website](https://tjas01.github.io/)  
-- [LinkedIn](https://www.linkedin.com/in/tejasvyasam/)  
-- 📧 Email: vtejasc@gmail.com  
-
----
-
-⚡ *Always looking to collaborate on data-driven projects and automation workflows that create measurable impact.*
+The website is served by GitHub Pages from this repository's main branch.
